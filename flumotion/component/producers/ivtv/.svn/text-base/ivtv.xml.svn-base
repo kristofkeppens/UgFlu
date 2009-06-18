@@ -1,0 +1,43 @@
+<registry>
+
+  <components>
+    <component type="ivtv-producer"
+               base="flumotion/component/producers/ivtv"
+               _description="A producer that captures from IVTV devices">
+      <source location="flumotion.component.producers.ivtv.ivtv" />
+      <feeder name="video" />
+      <feeder name="audio" />
+
+      <entries>
+        <entry type="component" location="ivtv.py"
+               function="Ivtv" />
+      </entries>
+
+      <properties>
+        <property name="width" type="int" required="false"
+		  _description="The width of the video to capture." />
+        <property name="height" type="int" required="false"
+		  _description="The height of the video to capture." />
+	<property name="device" type="string" required="false"
+		  _description="The device to capture from (/dev/video0)." />
+	<property name="deinterlacer" type="string" required="false"
+                  _description="The GStreamer partial pipeline to use for deinterlacing." />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="ivtv-component">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+        <directories>
+            <directory name="flumotion/component/producers/ivtv">
+                <filename location="__init__.py" />
+                <filename location="ivtv.py" />
+            </directory>
+        </directories>
+    </bundle>
+  </bundles>
+
+</registry>

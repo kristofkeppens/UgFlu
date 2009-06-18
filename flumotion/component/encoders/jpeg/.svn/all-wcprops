@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/jpeg
+END
+jpeg.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/encoders/jpeg/jpeg.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/encoders/jpeg/__init__.py
+END
+jpeg.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7161/flumotion/trunk/flumotion/component/encoders/jpeg/jpeg.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/jpeg/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/6621/flumotion/trunk/flumotion/component/encoders/jpeg/wizard.glade
+END

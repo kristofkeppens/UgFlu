@@ -100,7 +100,7 @@ from flumotion.ui.trayicon import FluTrayIcon
 
 admin # pyflakes
 
-__version__ = "$Rev: 7780 $"
+__version__ = "$Rev: 7941 $"
 _ = gettext.gettext
 T_ = gettexter()
 
@@ -899,6 +899,12 @@ class AdminWindow(Loggable, GladeDelegate):
                                             self._componentNameToSelect)
         self._trayicon.update(self._componentStates)
 
+    def _appendComponent(self, component):
+        self._componentStates[component.get('name')] = component
+        self._componentList.appendComponent(component,
+                                            self._componentNameToSelect)
+        self._trayicon.update(self._componentStates)
+
     def _hasProducerComponent(self):
         for state in self._componentList.getComponentStates():
             if state is None:
@@ -922,9 +928,7 @@ class AdminWindow(Loggable, GladeDelegate):
         def flowStateAppend(state, key, value):
             self.debug('flow state append: key %s, value %r' % (key, value))
             if key == 'components':
-                self._componentStates[value.get('name')] = value
-                # FIXME: would be nicer to do this incrementally instead
-                self._updateComponents()
+                self._appendComponent(value)
 
         def flowStateRemove(state, key, value):
             if key == 'components':
@@ -932,9 +936,7 @@ class AdminWindow(Loggable, GladeDelegate):
 
         def atmosphereStateAppend(state, key, value):
             if key == 'components':
-                self._componentStates[value.get('name')] = value
-                # FIXME: would be nicer to do this incrementally instead
-                self._updateComponents()
+                self._appendComponent(value)
 
         def atmosphereStateRemove(state, key, value):
             if key == 'components':
@@ -949,8 +951,9 @@ class AdminWindow(Loggable, GladeDelegate):
                 self.debug('%s flow started', value.get('name'))
                 value.addListener(self, append=flowStateAppend,
                                   remove=flowStateRemove)
-                for c in value.get('components'):
-                    flowStateAppend(value, 'components', c)
+
+                self._componentStates.update(
+                    dict((c.get('name'), c) for c in value.get('components')))
                 self._updateComponents()
 
         def planetStateRemove(state, key, value):
@@ -980,11 +983,15 @@ class AdminWindow(Loggable, GladeDelegate):
         a = planetState.get('atmosphere')
         a.addListener(self, append=atmosphereStateAppend,
                       remove=atmosphereStateRemove)
-        for c in a.get('components'):
-            atmosphereStateAppend(a, 'components', c)
+
+        self._componentStates.update(
+            dict((c.get('name'), c) for c in a.get('components')))
 
         for f in planetState.get('flows'):
             planetStateAppend(planetState, 'flows', f)
+
+        if not planetState.get('flows'):
+            self._updateComponents()
 
     def _clearAllComponents(self):
         d = self._adminModel.cleanComponents()
@@ -1008,8 +1015,7 @@ class AdminWindow(Loggable, GladeDelegate):
         if self._currentComponentStates and state \
            in self._currentComponentStates:
             self._currentComponentStates.remove(state)
-        # FIXME: would be nicer to do this incrementally instead
-        self._updateComponents()
+        self._componentList.removeComponent(state)
         # a component being removed means our selected component could
         # have gone away
         self._updateComponentActions()
@@ -1185,8 +1191,8 @@ class AdminWindow(Loggable, GladeDelegate):
             messages = state.get('messages')
             if messages:
                 for m in messages:
-                    self.debug('have message %r' % m)
-                    self.debug('message id %s' % m.id)
+                    self.debug('have message %r', m)
+                    self.debug('message id %s', m.id)
                     self._messageView.addMessage(m)
 
             if state.get('mood') == moods.sad.value:

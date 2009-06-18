@@ -23,6 +23,7 @@ import os
 import random
 import socket
 import string
+import time
 from urllib2 import urlparse
 
 from twisted.cred import portal
@@ -30,14 +31,14 @@ from twisted.internet import protocol, reactor, address, error, defer
 from twisted.spread import pb
 from zope.interface import implements
 
-from flumotion.common import medium, log, messages
+from flumotion.common import medium, log, messages, errors
 from flumotion.common.i18n import N_, gettexter
 from flumotion.component import component
 from flumotion.component.component import moods
 from flumotion.twisted import credentials, fdserver, checkers
 from flumotion.twisted import reflect
 
-__version__ = "$Rev: 7162 $"
+__version__ = "$Rev: 7938 $"
 T_ = gettexter()
 
 
@@ -309,8 +310,6 @@ class Porter(component.BaseComponent, log.Loggable):
         p = portal.Portal(realm, [checker])
         serverfactory = pb.PBServerFactory(p)
 
-        # FIXME: shouldn't we be raising handled errors here?
-
         try:
             # Rather than a normal listenTCP() or listenUNIX(), we use
             # listenWith so that we can specify our particular Port, which
@@ -330,7 +329,7 @@ class Porter(component.BaseComponent, log.Loggable):
                 self._socketPath))
             self.addMessage(m)
             self.setMood(moods.sad)
-            return defer.fail(e)
+            return defer.fail(errors.ComponentSetupHandledError())
 
         # Create the class that deals with the specific protocol we're proxying
         # in this porter.
@@ -356,7 +355,7 @@ class Porter(component.BaseComponent, log.Loggable):
                 "Network error: TCP port %d is not available."), self._port))
             self.addMessage(m)
             self.setMood(moods.sad)
-            return defer.fail(e)
+            return defer.fail(errors.ComponentSetupHandledError())
 
 
 class PorterProtocolFactory(protocol.Factory):
@@ -400,10 +399,17 @@ class PorterProtocol(protocol.Protocol, log.Loggable):
         self._buffer = ''
         self._porter = porter
 
-        self.debug("Accepted connection")
 
         self._timeoutDC = reactor.callLater(self.PORTER_CLIENT_TIMEOUT,
             self._timeout)
+
+    def connectionMade(self):
+
+        # PROBE: accepted connection
+        self.debug("[fd %5d] (ts %f) accepted connection",
+                   self.transport.fileno(), time.time())
+
+        protocol.Protocol.connectionMade(self)
 
     def _timeout(self):
         self._timeoutDC = None
@@ -432,7 +438,11 @@ class PorterProtocol(protocol.Protocol, log.Loggable):
             # Failed to find a valid delimiter.
             self.log("No valid delimiter found")
             if len(self._buffer) > self.MAX_SIZE:
-                self.log("Dropping connection!")
+
+                # PROBE: dropping
+                self.debug("[fd %5d] (ts %f) dropping, buffer exceeded",
+                           self.transport.fileno(), time.time())
+
                 return self.transport.loseConnection()
             else:
                 # No delimiter found; haven't reached the length limit yet.
@@ -447,6 +457,10 @@ class PorterProtocol(protocol.Protocol, log.Loggable):
             self.log("Couldn't find identifier in first line")
             return self.transport.loseConnection()
 
+        # PROBE: request
+        self.debug("[fd %5d] (ts %f) request line %r, identifier %s",
+                   self.transport.fileno(), time.time(), line, identifier)
+
         # Ok, we have an identifier. Is it one we know about, or do we have
         # a default destination?
         destinationAvatar = self._porter.findDestination(identifier)
@@ -454,7 +468,13 @@ class PorterProtocol(protocol.Protocol, log.Loggable):
         if not destinationAvatar or not destinationAvatar.isAttached():
             if destinationAvatar:
                 self.debug("There was an avatar, but it logged out?")
-            self.debug("No destination avatar found for \"%s\"" % identifier)
+
+            # PROBE: no destination; see send fd
+            self.debug(
+                "[fd %5d] (ts %f) no destination avatar found "
+                "for request line %r",
+                self.transport.fileno(), time.time(), line)
+
             self.writeNotFoundResponse()
             return self.transport.loseConnection()
 
@@ -464,11 +484,22 @@ class PorterProtocol(protocol.Protocol, log.Loggable):
         # so it looks to the receiver like it has read the entire data stream
         # itself.
 
+        # PROBE: send fd; see no destination and fdserver.py
+        self.debug("[fd %5d] (ts %f) send fd to avatarId %s "
+                   "for request line %r",
+                   self.transport.fileno(), time.time(),
+                   destinationAvatar.avatarId, line)
+
         # TODO: Check out blocking characteristics of sendFileDescriptor, fix
         # if it blocks.
-        self.debug("Attempting to send FD: %d" % self.transport.fileno())
         destinationAvatar.mind.broker.transport.sendFileDescriptor(
             self.transport.fileno(), self._buffer)
+
+        # PROBE: sent fd; see no destination and fdserver.py
+        self.debug("[fd %5d] (ts %f) sent fd to avatarId %s "
+                   "for request line %r",
+                   self.transport.fileno(), time.time(),
+                   destinationAvatar.avatarId, line)
 
         # After this, we don't want to do anything with the FD, other than
         # close our reference to it - but not close the actual TCP connection.

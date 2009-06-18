@@ -1,0 +1,63 @@
+2009-05-23  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  Fix reference in docstring.
+
+2008-08-30  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  Change usage to not include the own name.  This allows us
+	  to do the right default thing for commands with subcommands.
+
+2008-08-03  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* test_command.py:
+	  Fix test.
+
+2008-08-01  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	patch by: Johan Dahlin
+
+	* command.py:
+	* test_command.py:
+	  Clean up with pep8.py
+
+2008-07-31  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  Allowing returning None, to indicate nothing was done,
+	  so help can properly fall through.
+
+2008-05-15  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* test_command.py:
+	  Fix test after we made exit stop raising SystemExit
+
+2008-05-15  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  add OptionParser.{help,usage}_printed so that Command subclasses
+	  that override parse can exit properly as soon as help or usage
+	  is printed.
+
+2008-05-12  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  Override exit() so that we don't actually exit when used in
+	  an interactive shell.
+	  Add API docs.
+
+2007-07-19  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* test_command.py:
+	  Seems on F7 that optparse outputs a capital for the first letter.
+
+2007-06-24  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* test_command.py:
+	  Add tests from Savon.
+
+2007-06-24  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* command.py:
+	  Add help command.  Fixes #240.

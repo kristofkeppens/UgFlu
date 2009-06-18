@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7767/flumotion/trunk/flumotion/component/combiners/switch
+END
+switch.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/7767/flumotion/trunk/flumotion/component/combiners/switch/switch.py
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/combiners/switch/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/combiners/switch/__init__.py
+END
+switch.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/combiners/switch/switch.xml
+END
+patternswitch.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/combiners/switch/patternswitch.py
+END
+basicwatchdog.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/combiners/switch/basicwatchdog.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/combiners/switch/Makefile.am
+END

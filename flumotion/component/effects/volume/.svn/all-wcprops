@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7743/flumotion/trunk/flumotion/component/effects/volume
+END
+volume.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/effects/volume/volume.xml
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/effects/volume/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/effects/volume/__init__.py
+END
+volume.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/component/effects/volume/volume.py
+END
+volume.glade
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7743/flumotion/trunk/flumotion/component/effects/volume/volume.glade
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/1602/flumotion/trunk/flumotion/component/effects/volume/Makefile.am
+END

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7938/flumotion/trunk/flumotion/component/misc/porter
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/misc/porter/__init__.py
+END
+porterclient.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/misc/porter/porterclient.py
+END
+porter.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7938/flumotion/trunk/flumotion/component/misc/porter/porter.py
+END
+porter.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/misc/porter/porter.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/3210/flumotion/trunk/flumotion/component/misc/porter/Makefile.am
+END

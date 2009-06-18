@@ -1,0 +1,72 @@
+<registry>
+  <components>
+    <component type="overlay-converter"
+               base="flumotion/component/converters/overlay"
+               _description="Overlays text and images onto a raw video feed.">
+      <source location="flumotion.component.converters.overlay.overlay"/>
+      <eater name="default" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="overlay.py"
+               function="Overlay" />
+      </entries>
+      <properties>
+        <property name="show-text" type="bool"
+                  _description="Whether to show text." />
+        <property name="text" type="string"
+                  _description="Text to show" />
+
+        <property name="fluendo-logo" type="bool"
+                  _description="Whether to show a Fluendo logo." />
+        <property name="cc-logo" type="bool"
+                  _description="Whether to show a Creative Commons logo." />
+        <property name="xiph-logo" type="bool"
+                  _description="Whether to show a Xiph logo." />
+
+        <property name="width" type="int" required="yes"
+                  _description="The width of the overlaid image." />
+        <property name="height" type="int" required="yes"
+                  _description="The height of the overlaid image." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="overlay-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/converters/overlay">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="overlay-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="overlay-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/converters/overlay">
+                <filename location="overlay.py" />
+                <filename location="genimg.py" />
+                <filename location="cc.24x24.png" />
+                <filename location="cc.36x36.png" />
+                <filename location="fluendo.24x24.png" />
+                <filename location="fluendo.36x36.png" />
+                <filename location="xiph.24x24.png" />
+                <filename location="xiph.36x36.png" />
+                <filename location="Vera.ttf" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

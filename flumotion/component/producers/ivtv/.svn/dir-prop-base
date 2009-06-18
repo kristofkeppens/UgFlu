@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 44
+
+ivtv.pyc
+Makefile.in
+__init__.pyc
+Makefile
+
+END

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/flumotion/svn/!svn/ver/7904/flumotion/trunk/flumotion/worker
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/worker/__init__.py
+END
+config.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/config.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/main.py
+END
+job.py
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/job.py
+END
+feedserver.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/feedserver.py
+END
+worker.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/worker.py
+END
+base.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/base.py
+END
+medium.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/worker/medium.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/5308/flumotion/trunk/flumotion/worker/Makefile.am
+END

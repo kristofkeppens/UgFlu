@@ -1,0 +1,65 @@
+<registry>
+
+  <components>
+
+    <component type="mulaw-encoder" base="flumotion/component/encoders/mulaw"
+               _description="Encodes raw audio to mu-law.">
+      <source location="flumotion.component.encoders.mulaw.mulaw"/>
+      <eater name="default"/>
+      <feeder name="default"/>
+      <entries>
+        <entry type="component" location="mulaw.py"
+               function="Mulaw"/>
+        <entry type="wizard" location="wizard_gtk.py"
+               function="MulawWizardPlugin" />
+      </entries>
+      <wizard _description="Mulaw" type="audio-encoder"
+              feeder="default" eater="default">
+        <provide-format media-type="mulaw"/>
+      </wizard>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="mulaw-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/mulaw">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="mulaw-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="mulaw-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/mulaw">
+                <filename location="mulaw.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="mulaw-wizard">
+	<dependencies>
+		<dependency name="mulaw-base" />
+	</dependencies>
+	<directories>
+		<directory name="flumotion/component/encoders/mulaw">
+			<filename location="wizard.glade" />
+			<filename location="wizard_gtk.py" />
+		</directory>
+	</directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

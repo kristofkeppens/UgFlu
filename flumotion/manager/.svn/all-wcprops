@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/flumotion/svn/!svn/ver/7740/flumotion/trunk/flumotion/manager
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/manager/__init__.py
+END
+config.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7669/flumotion/trunk/flumotion/manager/config.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/manager/main.py
+END
+component.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7740/flumotion/trunk/flumotion/manager/component.py
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/manager/admin.py
+END
+manager.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7408/flumotion/trunk/flumotion/manager/manager.py
+END
+worker.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/manager/worker.py
+END
+base.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/manager/base.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/manager/Makefile.am
+END

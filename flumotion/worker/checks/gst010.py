@@ -19,8 +19,6 @@
 
 # Headers in this file shall remain intact.
 
-import os
-
 import gobject
 import gst
 import gst.interfaces
@@ -32,7 +30,7 @@ from flumotion.common.i18n import N_, gettexter
 from flumotion.twisted import defer as fdefer
 from flumotion.worker.checks import check
 
-__version__ = "$Rev: 7831 $"
+__version__ = "$Rev: 7904 $"
 T_ = gettexter()
 
 

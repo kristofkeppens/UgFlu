@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7888/flumotion/trunk/flumotion/component/producers/audiotest
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7888/flumotion/trunk/flumotion/component/producers/audiotest/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/audiotest/__init__.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7649/flumotion/trunk/flumotion/component/producers/audiotest/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7649/flumotion/trunk/flumotion/component/producers/audiotest/wizard.glade
+END
+audiotest.glade
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/flumotion/svn/!svn/ver/7888/flumotion/trunk/flumotion/component/producers/audiotest/audiotest.glade
+END
+audiotest.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7649/flumotion/trunk/flumotion/component/producers/audiotest/audiotest.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/6621/flumotion/trunk/flumotion/component/producers/audiotest/Makefile.am
+END
+audiotest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7649/flumotion/trunk/flumotion/component/producers/audiotest/audiotest.xml
+END

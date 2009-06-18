@@ -1,0 +1,51 @@
+<registry>
+
+  <components>
+
+    <component type="unixdomain-producer"
+               base="flumotion/component/producers/unixdomain"
+               _description="A producer that produces from a UNIX domain socket.  This is mostly used for testing.">
+      <source location="flumotion.component.producers.unixdomain.unixdomain" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="unixdomain.py"
+               function="UnixDomainProvider" />
+      </entries>
+      <properties>
+        <property name="path" type="string" required="yes"
+                  _description="The path to the unix domain socket." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="unixdomain-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/unixdomain">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="unixdomain-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="unixdomain-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/unixdomain">
+                <filename location="unixdomain.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

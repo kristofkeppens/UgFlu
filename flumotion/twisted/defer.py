@@ -27,7 +27,7 @@ from twisted.python import reflect
 # FIXME: this is for HandledException - maybe it should move here instead ?
 from flumotion.common import errors
 
-__version__ = "$Rev: 7162 $"
+__version__ = "$Rev: 7901 $"
 
 
 # See flumotion.test.test_defer for examples
@@ -229,6 +229,7 @@ class RetryingDeferred(object):
         """
         self._masterD = defer.Deferred()
         self._running = True
+        self.delay = None
 
         self._retry()
 

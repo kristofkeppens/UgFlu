@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/combiners/composite
+END
+composite.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/component/combiners/composite/composite.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/combiners/composite/__init__.py
+END
+composite.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/combiners/composite/composite.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/5818/flumotion/trunk/flumotion/component/combiners/composite/Makefile.am
+END

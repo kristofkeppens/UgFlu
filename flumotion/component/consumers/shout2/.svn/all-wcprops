@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/consumers/shout2
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/consumers/shout2/__init__.py
+END
+shout2.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/consumers/shout2/shout2.py
+END
+shout2.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/consumers/shout2/shout2.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/6811/flumotion/trunk/flumotion/component/consumers/shout2/Makefile.am
+END

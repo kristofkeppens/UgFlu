@@ -1,0 +1,46 @@
+<registry>
+  <bundles>
+
+    <bundle name="component-base">
+      <dependencies>
+        <dependency name="flumotion" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component">
+          <filename location="__init__.py" />
+          <filename location="producers/__init__.py" />
+          <filename location="combiners/__init__.py" />
+	  <filename location="converters/__init__.py" />
+          <filename location="encoders/__init__.py" />
+          <filename location="muxers/__init__.py" />
+          <filename location="consumers/__init__.py" />
+          <filename location="bouncers/__init__.py" />
+          <filename location="effects/__init__.py" />
+          <filename location="base/__init__.py" />
+          <filename location="misc/__init__.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="component">
+      <dependencies>
+        <dependency name="component-base" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component">
+          <filename location="component.py" />
+          <filename location="eater.py" />
+          <filename location="feed.py" />
+          <filename location="feeder.py" />
+          <filename location="feedcomponent.py" />
+          <filename location="feedcomponent010.py" />
+          <filename location="padmonitor.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

@@ -1,0 +1,77 @@
+<registry>
+  <components>
+    <component type="loop-producer"
+               base="flumotion/component/producers/looper"
+               _description="Produces a raw audio/video feed from an Ogg file,
+looping continuously.">
+      <source location="flumotion.component.producers.looper.looper" />
+      <feeder name="audio"/>
+      <feeder name="video"/>
+      <entries>
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass"/>
+        <entry type="admin/text" location="admin_text.py"
+               function="UIClass"/>
+        <entry type="component" location="looper.py"
+               function="Looper" />
+      </entries>
+
+      <synchronization required="yes" clock-priority="110" />
+
+      <properties>
+        <property name="height" type="int"
+                  _description="The height to scale the video to." />
+        <property name="width" type="int"
+                  _description="The width to scale the video to." />
+        <property name="framerate" type="fraction"
+                  _description="Framerate to output" />
+        <property name="location" type="string" required="yes"
+                  _description="The location of the source file to loop." />
+      </properties>
+    </component>
+  </components>
+  <bundles>
+
+    <bundle name="looper-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/looper">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="looper-admin-gtk">
+      <dependencies>
+        <dependency name="looper-base" />
+        <dependency name="base-admin-gtk" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/producers/looper">
+          <filename location="admin_gtk.py" />
+	  <filename location="looper.glade" />
+	  <filename location="flufileinfo.glade" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="looper-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="looper-base" />
+            <dependency name="producer-checks" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/looper">
+                <filename location="looper.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+</registry>

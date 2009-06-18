@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7900/flumotion/trunk/flumotion/scenario/ondemand
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/ondemand/__init__.py
+END
+ondemand.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7900/flumotion/trunk/flumotion/scenario/ondemand/ondemand.xml
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/ondemand/wizard_gtk.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7727/flumotion/trunk/flumotion/scenario/ondemand/Makefile.am
+END

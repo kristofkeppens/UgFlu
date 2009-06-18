@@ -21,10 +21,11 @@
 
 import gst
 
+from flumotion.common import gstreamer
 from flumotion.component import feedcomponent
 from vorbisutils import get_max_sample_rate, get_preferred_sample_rate
 
-__version__ = "$Rev: 7161 $"
+__version__ = "$Rev: 7889 $"
 
 
 class Vorbis(feedcomponent.ParseLaunchComponent):
@@ -48,9 +49,11 @@ class Vorbis(feedcomponent.ParseLaunchComponent):
         self.bitrate = properties.get('bitrate', -1)
         self.quality = properties.get('quality', 0.3)
         self.channels = properties.get('channels', 2)
-
-        return ('audioresample name=ar ! audioconvert ! capsfilter name=cf '
-                '! vorbisenc name=enc')
+        resampler = 'audioresample'
+        if gstreamer.element_factory_exists('legacyresample'):
+            resampler = 'legacyresample'
+        return ('%s name=ar ! audioconvert ! capsfilter name=cf '
+                '! vorbisenc name=enc' % resampler)
 
     def configure_pipeline(self, pipeline, properties):
         enc = pipeline.get_by_name('enc')

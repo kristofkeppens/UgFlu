@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/effects/colorbalance
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/effects/colorbalance/admin_gtk.py
+END
+colorbalance.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/effects/colorbalance/colorbalance.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/effects/colorbalance/__init__.py
+END
+colorbalance.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/effects/colorbalance/colorbalance.xml
+END
+colorbalance.glade
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/flumotion/svn/!svn/ver/1243/flumotion/trunk/flumotion/component/effects/colorbalance/colorbalance.glade
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/1602/flumotion/trunk/flumotion/component/effects/colorbalance/Makefile.am
+END

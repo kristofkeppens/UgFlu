@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/tester
+END
+httpclient.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/tester/httpclient.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/tester/__init__.py
+END
+client.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/tester/client.py
+END
+clientfactory.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/tester/clientfactory.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/tester/Makefile.am
+END

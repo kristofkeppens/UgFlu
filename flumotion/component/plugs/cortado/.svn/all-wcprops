@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7785/flumotion/trunk/flumotion/component/plugs/cortado
+END
+cortado.xml
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7785/flumotion/trunk/flumotion/component/plugs/cortado/cortado.xml
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/plugs/cortado/__init__.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7785/flumotion/trunk/flumotion/component/plugs/cortado/wizard_gtk.py
+END
+cortado.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7785/flumotion/trunk/flumotion/component/plugs/cortado/cortado.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/plugs/cortado/Makefile.am
+END
+cortado_location.py.in
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/plugs/cortado/cortado_location.py.in
+END

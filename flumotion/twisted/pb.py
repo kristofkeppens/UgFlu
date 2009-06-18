@@ -43,7 +43,7 @@ from flumotion.common.netutils import addressGetHost
 from flumotion.twisted import reflect as freflect
 from flumotion.twisted import credentials as fcredentials
 
-__version__ = "$Rev: 7371 $"
+__version__ = "$Rev: 7942 $"
 
 
 # TODO:
@@ -788,6 +788,10 @@ class PingableAvatar(Avatar):
         if self._pingCheckDC:
             self._pingCheckDC.cancel()
         self._pingCheckDC = None
+
+        # release the disconnect function, too, to help break any
+        # potential cycles
+        self._pingCheckDisconnect = None
 
     def setMind(self, mind):
         # chain up

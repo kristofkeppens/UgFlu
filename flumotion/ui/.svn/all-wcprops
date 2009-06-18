@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/flumotion/svn/!svn/ver/7762/flumotion/trunk/flumotion/ui
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/ui/__init__.py
+END
+fvumeter.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/ui/fvumeter.py
+END
+trayicon.py
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7620/flumotion/trunk/flumotion/ui/trayicon.py
+END
+fgtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/ui/fgtk.py
+END
+glade.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/flumotion/svn/!svn/ver/7570/flumotion/trunk/flumotion/ui/glade.py
+END
+kiwipatches.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/ui/kiwipatches.py
+END
+icons.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/flumotion/svn/!svn/ver/7571/flumotion/trunk/flumotion/ui/icons.py
+END
+simplewizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/ui/simplewizard.py
+END
+wizard.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/flumotion/svn/!svn/ver/7762/flumotion/trunk/flumotion/ui/wizard.py
+END
+fileselector.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7696/flumotion/trunk/flumotion/ui/fileselector.py
+END
+linkwidget.py
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/flumotion/svn/!svn/ver/7745/flumotion/trunk/flumotion/ui/linkwidget.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7088/flumotion/trunk/flumotion/ui/Makefile.am
+END

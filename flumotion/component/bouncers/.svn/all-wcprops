@@ -1,0 +1,125 @@
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7826/flumotion/trunk/flumotion/component/bouncers
+END
+deprecated.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/bouncers/deprecated.xml
+END
+tokentest.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7797/flumotion/trunk/flumotion/component/bouncers/tokentest.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/bouncers/__init__.py
+END
+saltsha256.xml
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/bouncers/saltsha256.xml
+END
+component.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/bouncers/component.py
+END
+bouncer.glade
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/1547/flumotion/trunk/flumotion/component/bouncers/bouncer.glade
+END
+tokentestbouncer.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/bouncers/tokentestbouncer.py
+END
+saltsha256.py
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/bouncers/saltsha256.py
+END
+ipbouncer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/bouncers/ipbouncer.xml
+END
+bouncer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7385/flumotion/trunk/flumotion/component/bouncers/bouncer.xml
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/bouncers/admin_gtk.py
+END
+icalbouncer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/bouncers/icalbouncer.xml
+END
+icalbouncer.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7797/flumotion/trunk/flumotion/component/bouncers/icalbouncer.py
+END
+plug.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7635/flumotion/trunk/flumotion/component/bouncers/plug.py
+END
+htpasswdcrypt.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7161/flumotion/trunk/flumotion/component/bouncers/htpasswdcrypt.py
+END
+htpasswdcrypt.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/bouncers/htpasswdcrypt.xml
+END
+ipbouncer.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/7408/flumotion/trunk/flumotion/component/bouncers/ipbouncer.py
+END
+tokentest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7385/flumotion/trunk/flumotion/component/bouncers/tokentest.xml
+END
+bouncer.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7826/flumotion/trunk/flumotion/component/bouncers/bouncer.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7325/flumotion/trunk/flumotion/component/bouncers/Makefile.am
+END

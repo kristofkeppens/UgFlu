@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7781/flumotion/trunk/flumotion/component/encoders/smoke
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/encoders/smoke/__init__.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7781/flumotion/trunk/flumotion/component/encoders/smoke/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7781/flumotion/trunk/flumotion/component/encoders/smoke/wizard.glade
+END
+smoke.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/encoders/smoke/smoke.xml
+END
+smoke.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7693/flumotion/trunk/flumotion/component/encoders/smoke/smoke.py
+END

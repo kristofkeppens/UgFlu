@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/dirac
+END
+dirac.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/6695/flumotion/trunk/flumotion/component/encoders/dirac/dirac.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/6504/flumotion/trunk/flumotion/component/encoders/dirac/__init__.py
+END
+dirac.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/encoders/dirac/dirac.xml
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/dirac/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/6621/flumotion/trunk/flumotion/component/encoders/dirac/wizard.glade
+END

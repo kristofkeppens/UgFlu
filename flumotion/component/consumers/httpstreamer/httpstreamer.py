@@ -39,7 +39,7 @@ from flumotion.component.misc.porter import porterclient
 from flumotion.twisted import fdserver
 
 __all__ = ['HTTPMedium', 'MultifdSinkStreamer']
-__version__ = "$Rev: 7634 $"
+__version__ = "$Rev: 7928 $"
 T_ = gettexter()
 STATS_POLL_INTERVAL = 10
 UI_UPDATE_THROTTLE_PERIOD = 2.0 # Don't update UI more than once every two
@@ -802,4 +802,4 @@ class MultifdSinkStreamer(feedcomponent.ParseLaunchComponent, Stats):
                                       self.port))
                 self.addMessage(m)
                 self.setMood(moods.sad)
-                return defer.fail(errors.ComponentStartHandledError(t))
+                return defer.fail(errors.ComponentSetupHandledError(t))

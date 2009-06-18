@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7832/flumotion/trunk/flumotion/component/producers/looper
+END
+looper.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/7832/flumotion/trunk/flumotion/component/producers/looper/looper.py
+END
+flufileinfo.glade
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/flumotion/svn/!svn/ver/6480/flumotion/trunk/flumotion/component/producers/looper/flufileinfo.glade
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/looper/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/looper/__init__.py
+END
+looper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/producers/looper/looper.xml
+END
+looper.glade
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/flumotion/svn/!svn/ver/6480/flumotion/trunk/flumotion/component/producers/looper/looper.glade
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/2608/flumotion/trunk/flumotion/component/producers/looper/Makefile.am
+END

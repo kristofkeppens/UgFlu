@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 49
+*.pyc
+Makefile.in
+Makefile
+*.gladep
+*.glade*.bak
+
+END

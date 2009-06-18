@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/flumotion/svn/!svn/ver/7936/flumotion/trunk/flumotion/component/producers/playlist
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/7935/flumotion/trunk/flumotion/component/producers/playlist/admin_gtk.py
+END
+playlist.glade
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7935/flumotion/trunk/flumotion/component/producers/playlist/playlist.glade
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/playlist/__init__.py
+END
+playlistparser.py
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/flumotion/svn/!svn/ver/7849/flumotion/trunk/flumotion/component/producers/playlist/playlistparser.py
+END
+singledecodebin.py
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/flumotion/svn/!svn/ver/7827/flumotion/trunk/flumotion/component/producers/playlist/singledecodebin.py
+END
+playlist.dtd
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/7798/flumotion/trunk/flumotion/component/producers/playlist/playlist.dtd
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/producers/playlist/README
+END
+playlist.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/7935/flumotion/trunk/flumotion/component/producers/playlist/playlist.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/7935/flumotion/trunk/flumotion/component/producers/playlist/Makefile.am
+END
+playlist.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/7935/flumotion/trunk/flumotion/component/producers/playlist/playlist.py
+END
+smartscale.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/playlist/smartscale.py
+END

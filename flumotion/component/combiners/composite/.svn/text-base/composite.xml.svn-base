@@ -1,0 +1,62 @@
+<registry>
+  <components>
+    <component type="composite-combiner"
+               base="flumotion/component/combiners/composite"
+               _description="Combines multiple visual inputs.">
+      <source location="flumotion.component.combiners.composite.composite" />
+
+      <eater name="default" multiple="yes" />
+
+      <feeder name="default" />
+
+      <entries>
+        <entry type="component" location="composite.py"
+               function="Composite" />
+      </entries>
+
+      <properties>
+        <compound-property name="input" multiple="yes"
+                           _description="The position, z-order and alpha properties of a single visual input.">
+          <property name="feeder-alias" type="string" required="yes"
+                    _description="The alias of the feeder providing the input."
+                    />
+          <property name="position-left" type="int" />
+          <property name="position-top" type="int" />
+          <property name="z-order" type="int"
+                    _description="A non-negative integer specifying the z-order of the input (with 0 meaning the input will be drawn below all others). Each input must have a unique z-order value." />
+          <property name="alpha" type="float"
+                    _description="The transparency of the input, with full transparency at 0.0, to full opacity at 1.0." />
+        </compound-property>
+      </properties>
+
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="composite-combiner-base">
+      <dependencies>
+        <dependency name="component-base" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/combiners/composite">
+          <filename location="__init__.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="composite-combiner-component">
+      <dependencies>
+        <dependency name="component" />
+        <dependency name="composite-combiner-base" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/combiners/composite">
+          <filename location="composite.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+  </bundles>
+</registry>

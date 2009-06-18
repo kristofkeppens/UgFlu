@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/extern/pytrayicon
+END
+eggtrayicon.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/extern/pytrayicon/eggtrayicon.c
+END
+ltihooks.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/extern/pytrayicon/ltihooks.py
+END
+pytrayicon.override
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/extern/pytrayicon/pytrayicon.override
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/extern/pytrayicon/__init__.py
+END
+eggtrayicon.h
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/extern/pytrayicon/eggtrayicon.h
+END
+pytrayicon.defs
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/1701/flumotion/trunk/flumotion/extern/pytrayicon/pytrayicon.defs
+END
+config.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/1657/flumotion/trunk/flumotion/extern/pytrayicon/config.h
+END
+pytrayiconmodule.c
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/1657/flumotion/trunk/flumotion/extern/pytrayicon/pytrayiconmodule.c
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/5836/flumotion/trunk/flumotion/extern/pytrayicon/Makefile.am
+END

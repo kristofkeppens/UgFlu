@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/mulaw
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/encoders/mulaw/__init__.py
+END
+mulaw.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/encoders/mulaw/mulaw.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/mulaw/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/flumotion/svn/!svn/ver/6621/flumotion/trunk/flumotion/component/encoders/mulaw/wizard.glade
+END
+mulaw.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7147/flumotion/trunk/flumotion/component/encoders/mulaw/mulaw.xml
+END

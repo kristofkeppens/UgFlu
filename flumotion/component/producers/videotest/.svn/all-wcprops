@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7304/flumotion/trunk/flumotion/component/producers/videotest
+END
+videotest.xml
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7304/flumotion/trunk/flumotion/component/producers/videotest/videotest.xml
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/videotest/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/videotest/__init__.py
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7267/flumotion/trunk/flumotion/component/producers/videotest/wizard_gtk.py
+END
+wizard.glade
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7152/flumotion/trunk/flumotion/component/producers/videotest/wizard.glade
+END
+admin_text.py
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/videotest/admin_text.py
+END
+videotest.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/videotest/videotest.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/6621/flumotion/trunk/flumotion/component/producers/videotest/Makefile.am
+END

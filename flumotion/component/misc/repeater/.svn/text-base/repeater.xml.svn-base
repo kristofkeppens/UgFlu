@@ -1,0 +1,52 @@
+<registry>
+
+  <components>
+
+    <component type="repeater" base="flumotion/component/misc/repeater"
+               _description="A component that simply repeats the feed without any processing.  This is useful to transport a feed to a different worker before feeding it to many other eaters.">
+      <source location="flumotion.component.misc.repeater.repeater"/>
+      <eater name="default"/>
+      <feeder name="default"/>
+      <entries>
+        <entry type="component" location="repeater.py"
+               function="Repeater"/>
+      </entries>
+      <properties>
+        <property name="drop-probability" type="float"
+                  _description="The fraction of buffers to drop (0.0 - 1.0)." />
+                  <!-- FIXME: Why would I drop buffers? What are buffers? Am I dropping some buffers or some parts of buffers? murrayc. -->
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="repeater-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/misc/repeater">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="repeater-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="repeater-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/misc/repeater">
+                <filename location="repeater.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

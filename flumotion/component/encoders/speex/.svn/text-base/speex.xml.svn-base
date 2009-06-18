@@ -1,0 +1,69 @@
+<registry>
+
+  <components>
+
+    <component type="speex-encoder" base="flumotion/component/encoders/speex"
+               _description="Encodes a raw audio feed using the Speex speech codec.">
+      <source location="flumotion.component.encoders.speex.speex" />
+      <eater name="default" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="speex.py" function="Speex" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="SpeexWizardPlugin" />
+      </entries>
+      <wizard _description="Speex" type="audio-encoder"
+              feeder="default" eater="default">
+        <provide-format media-type="speex" />
+      </wizard>
+      <properties>
+        <property name="bitrate" type="int"
+                  _description="The bit rate to encode at (in bps)." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="speex-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/speex">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="speex-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="speex-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/speex">
+                <filename location="speex.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="speex-wizard">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="speex-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/speex">
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

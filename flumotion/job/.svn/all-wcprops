@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/flumotion/svn/!svn/ver/7248/flumotion/trunk/flumotion/job
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/job/__init__.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/flumotion/svn/!svn/ver/6125/flumotion/trunk/flumotion/job/main.py
+END
+job.py
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/flumotion/svn/!svn/ver/7248/flumotion/trunk/flumotion/job/job.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/flumotion/svn/!svn/ver/2455/flumotion/trunk/flumotion/job/Makefile.am
+END

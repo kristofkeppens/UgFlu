@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/flumotion/svn/!svn/ver/7897/flumotion/trunk/flumotion/extern/log
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/extern/log/__init__.py
+END
+termcolor.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/extern/log/termcolor.py
+END
+ChangeLog
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7154/flumotion/trunk/flumotion/extern/log/ChangeLog
+END
+log.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7897/flumotion/trunk/flumotion/extern/log/log.py
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/4786/flumotion/trunk/flumotion/extern/log/README
+END
+test_log.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/extern/log/test_log.py
+END

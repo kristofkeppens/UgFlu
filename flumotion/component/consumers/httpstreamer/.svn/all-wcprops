@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/flumotion/svn/!svn/ver/7931/flumotion/trunk/flumotion/component/consumers/httpstreamer
+END
+httpstreamer.xml
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/flumotion/svn/!svn/ver/7670/flumotion/trunk/flumotion/component/consumers/httpstreamer/httpstreamer.xml
+END
+httpstreamer.py
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/flumotion/svn/!svn/ver/7928/flumotion/trunk/flumotion/component/consumers/httpstreamer/httpstreamer.py
+END
+admin_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/flumotion/svn/!svn/ver/7768/flumotion/trunk/flumotion/component/consumers/httpstreamer/admin_gtk.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/consumers/httpstreamer/__init__.py
+END
+httpstreamer.glade
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/flumotion/svn/!svn/ver/6428/flumotion/trunk/flumotion/component/consumers/httpstreamer/httpstreamer.glade
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/flumotion/svn/!svn/ver/6811/flumotion/trunk/flumotion/component/consumers/httpstreamer/Makefile.am
+END
+resources.py
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/flumotion/svn/!svn/ver/7931/flumotion/trunk/flumotion/component/consumers/httpstreamer/resources.py
+END

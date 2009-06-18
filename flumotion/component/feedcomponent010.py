@@ -36,7 +36,7 @@ from flumotion.component import feed, padmonitor
 from flumotion.component.feeder import Feeder
 from flumotion.component.eater import Eater
 
-__version__ = "$Rev: 7802 $"
+__version__ = "$Rev: 7901 $"
 T_ = gettexter()
 
 
@@ -184,9 +184,12 @@ class FeedComponent(basecomponent.BaseComponent):
 
         for feeder in self.feeders.values():
             element = pipeline.get_by_name(feeder.elementName)
-            element.connect('client-fd-removed', client_fd_removed,
-                            feeder)
-            self.debug("Connected to client-fd-removed on %r", feeder)
+            if element:
+                element.connect('client-fd-removed', client_fd_removed,
+                                feeder)
+                self.debug("Connected to client-fd-removed on %r", feeder)
+            else:
+                self.warning("No feeder %s in pipeline", feeder.elementName)
 
     def get_pipeline(self):
         return self.pipeline
@@ -340,6 +343,10 @@ class FeedComponent(basecomponent.BaseComponent):
                 # We do this because we know gdppay/gdpdepay screw up on 2nd
                 # newsegments (unclear what the original reason for this
                 # was, perhaps #349204)
+                # Other elements might also have problems with repeated
+                # newsegments coming in, so we just drop them all. Flumotion
+                # operates in single segment space, so dropping newsegments
+                # should be fine.
                 if getattr(eater, '_gotFirstNewSegment', False):
                     self.info("Subsequent new segment event received on "
                               "depay on eater %s", eater.eaterAlias)
@@ -352,9 +359,8 @@ class FeedComponent(basecomponent.BaseComponent):
         self.debug('adding event probe for eater %s', eater.eaterAlias)
         fdsrc = self.get_element(eater.elementName)
         fdsrc.get_pad("src").add_event_probe(fdsrc_event)
-        if gstreamer.get_plugin_version('gdp') < (0, 10, 10, 1):
-            depay = self.get_element(eater.depayName)
-            depay.get_pad("src").add_event_probe(depay_event)
+        depay = self.get_element(eater.depayName)
+        depay.get_pad("src").add_event_probe(depay_event)
 
     def _setup_pipeline(self):
         self.debug('setup_pipeline()')
@@ -521,7 +527,7 @@ class FeedComponent(basecomponent.BaseComponent):
 
     ### BaseComponent interface implementation
 
-    def try_start_pipeline(self):
+    def try_start_pipeline(self, force=False):
         """
         Tell the component to start.
         Whatever is using the component is responsible for making sure all
@@ -530,7 +536,9 @@ class FeedComponent(basecomponent.BaseComponent):
         (ret, state, pending) = self.pipeline.get_state(0)
         if state == gst.STATE_PLAYING:
             self.log('already PLAYING')
-            return
+            if not force:
+                return
+            self.debug('pipeline PLAYING, but starting anyway as requested')
 
         if self._clock_slaved and not self._master_clock_info:
             self.debug("Missing master clock info, deferring set to PLAYING")

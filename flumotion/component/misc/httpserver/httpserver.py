@@ -39,7 +39,7 @@ from flumotion.component.misc.httpserver import serverstats
 from flumotion.component.misc.porter import porterclient
 from flumotion.twisted import fdserver
 
-__version__ = "$Rev: 7670 $"
+__version__ = "$Rev: 7939 $"
 T_ = gettexter()
 
 UPTIME_UPDATE_INTERVAL = 5
@@ -216,6 +216,7 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
         self.stats = None
         self._rateControlPlug = None
         self._fileProviderPlug = None
+        self._metadataProviderPlug = None
         self._loggers = []
         self._requestModifiers = []
         self._logfilter = None
@@ -335,6 +336,13 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
             plugProps = {"properties": {"path": props.get('path', None)}}
             self._fileProviderPlug = localprovider.FileProviderLocalPlug(
                 plugProps)
+
+        socket = ('flumotion.component.misc.httpserver'
+                 '.metadataprovider.MetadataProviderPlug')
+        plugs = self.plugs.get(socket, [])
+        if plugs:
+            self._metadataProviderPlug = plugs[-1]
+
         # Update uiState
         self.uiState.set('stream-url', self.getUrl())
 
@@ -397,7 +405,7 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
                                       self.port))
                 self.addMessage(m)
                 self.setMood(moods.sad)
-                return defer.fail(errors.ComponentStartHandledError(t))
+                return defer.fail(errors.ComponentSetupHandledError(t))
             # fire callback so component gets happy
             d.callback(None)
         # we are responsible for setting component happy
@@ -471,6 +479,8 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
                             self._pbclient, 10, checkPID=False)
 
     def _timeoutRequests(self):
+        self._timeoutRequestsCallLater = None
+
         now = time.time()
         for request in self._connected_clients.values():
             if now - request.lastTimeWritten > self.REQUEST_TIMEOUT:
@@ -483,6 +493,10 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
                 request.channel.transport.connectionLost(
                     errors.TimeoutException())
 
+        # FIXME: ideally, we shouldn't create another callLater if the
+        # component is shutting down, to leave the environment clean
+        # and tidy (right now, let's hope the process will be stopped
+        # eventually anyway)
         self._timeoutRequestsCallLater = reactor.callLater(
             self.REQUEST_TIMEOUT, self._timeoutRequests)
 
@@ -495,7 +509,8 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
         factory = httpfile.MimedFileFactory(self.httpauth,
             mimeToResource=self._mimeToResource,
             rateController=self._rateControlPlug,
-            requestModifiers=self._requestModifiers)
+            requestModifiers=self._requestModifiers,
+            metadataProvider=self._metadataProviderPlug)
 
         root = factory.create(node)
         if self.mountPoint != '/':
@@ -548,10 +563,17 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
         return defer.DeferredList(l)
 
     def requestStarted(self, request):
+        # request does not yet have proto and uri
         fd = request.transport.fileno() # ugly!
         self._connected_clients[fd] = request
+        self.debug("[fd %5d] request %r started", fd, request)
 
     def requestFinished(self, request, bytesWritten, timeConnected, fd):
+
+        # PROBE: finishing request; see httpstreamer.resources
+        self.debug('[fd %5d] (ts %f) finishing request %r',
+                   request.transport.fileno(), time.time(), request)
+
         self.httpauth.cleanupAuth(fd)
         ip = request.getClientIP()
         if not self._logfilter or not self._logfilter.isInRange(ip):
@@ -576,6 +598,11 @@ class HTTPFileStreamer(component.BaseComponent, log.Loggable):
                 pending = self._pendingDisconnects.pop(fd)
                 self.debug("Firing pending disconnect deferred")
                 pending.callback(None)
+
+            # PROBE: finished request; see httpstreamer.resources
+            self.debug('[fd %5d] (ts %f) finished request %r',
+                       fd, time.time(), request)
+
         d.addCallback(firePendingDisconnect)
 
     def getDescription(self):

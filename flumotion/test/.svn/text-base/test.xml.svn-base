@@ -1,0 +1,33 @@
+<planet>
+
+  <flow name="testflow">
+    <component name="producer-video-test" type="pipeline-producer" worker="worker">
+      <property name="pipeline">
+  videotestsrc ! video/x-raw-yuv,width=320,height=240,framerate=5/1,format=(fourcc)I420
+      </property>
+    </component>
+
+    <component name="converter-ogg-theora" type="pipeline-converter" worker="worker">
+      <eater name="default">
+        <feed>producer-video-test</feed>
+      </eater>
+      <property name="pipeline">
+  ffmpegcolorspace ! theoraenc keyframe-force=5 ! oggmux
+      </property>
+    </component>
+
+    <component name="streamer-ogg-theora" type="http-streamer" worker="streamer">
+      <eater name="default">
+        <feed>converter-ogg-theora</feed>
+      </eater>
+      <property name="port">8800</property>
+      <plugs>
+        <plug socket="flumotion.component.plugs.request.RequestLoggerPlug"
+              type="requestlogger-file">
+          <property name="logfile">/tmp/ogg-test-theora.access.log</property>
+        </plug>
+      </plugs>
+    </component>
+  </flow>
+
+</planet>

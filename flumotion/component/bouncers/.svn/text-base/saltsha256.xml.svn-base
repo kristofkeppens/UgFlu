@@ -1,0 +1,38 @@
+<registry>
+  <components>
+    <component type="saltsha256-bouncer"
+               base="flumotion/component/bouncers"
+               _description="A bouncer using salted sha256 passwords.">
+
+      <source location="flumotion.component.bouncers.saltsha256" />
+
+      <entries>
+        <entry type="component" location="saltsha256.py"
+               function="SaltSha256" />
+      </entries>
+
+      <properties>
+        <property name="filename" type="string"
+                  _description="An htpasswd-like file to use as a backend" />
+        <property name="data" type="rawstring"
+                  _description="In-line htpasswd-like data to use as a backend" />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="saltsha256-component">
+      <dependencies>
+        <dependency name="component-base" />
+        <dependency name="deprecated-bouncer-base" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/bouncers">
+          <filename location="saltsha256.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+
+</registry>

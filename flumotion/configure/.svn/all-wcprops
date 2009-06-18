@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/flumotion/svn/!svn/ver/7372/flumotion/trunk/flumotion/configure
+END
+uninstalled.py.in
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/configure/uninstalled.py.in
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/configure/__init__.py
+END
+configure.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7372/flumotion/trunk/flumotion/configure/configure.py
+END
+installed.py.in
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/flumotion/svn/!svn/ver/7186/flumotion/trunk/flumotion/configure/installed.py.in
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/configure/Makefile.am
+END

@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 43
+
+Makefile.in
+gdp.pyc
+__init__.pyc
+Makefile
+
+END

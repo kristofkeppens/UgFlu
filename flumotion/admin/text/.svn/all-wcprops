@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text
+END
+greeter.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/greeter.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/__init__.py
+END
+view.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/view.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/main.py
+END
+admin_text.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/admin_text.py
+END
+misc_curses.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/text/misc_curses.py
+END
+connection.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7161/flumotion/trunk/flumotion/admin/text/connection.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/5843/flumotion/trunk/flumotion/admin/text/Makefile.am
+END

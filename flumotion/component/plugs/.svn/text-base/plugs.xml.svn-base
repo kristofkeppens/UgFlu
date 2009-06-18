@@ -1,0 +1,192 @@
+<registry>
+  <plugs>
+    <plug socket="flumotion.component.plugs.request.RequestLoggerPlug"
+          type="requestlogger-file"
+          _description="Logs all stream requests to a W3C-compatible log file.">
+      <entry location="flumotion/component/plugs/request.py"
+             function="RequestLoggerFilePlug" />
+
+      <properties>
+        <property name="logfile" type="string" required="true"
+                  _description="Path to log file to which to log requests." />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.plugs.adminaction.AdminActionPlug"
+          type="adminaction-loggerfile"
+          _description="Logs all actions made by admin clients to a log file.">
+      <entry location="flumotion/component/plugs/adminaction.py"
+             function="AdminActionLoggerFilePlug" />
+
+      <properties>
+        <property name="logfile" type="string" required="true"
+                  _description="Path to log file to which to log admin actions." />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.plugs.base.ManagerPlug"
+          type="manager-example"
+          _description="Shows how a manager plug works by printing on console.">
+      <entry location="flumotion/component/plugs/base.py"
+             function="ManagerExamplePlug" />
+    </plug>
+
+    <plug socket="flumotion.component.plugs.base.ManagerPlug"
+          type="manager-manhole"
+          _description="Creates a manhole to a manager to which you can log in over telnet or ssh.">
+      <entry location="flumotion/component/plugs/manhole.py"
+             function="ManagerManholePlug" />
+
+      <properties>
+        <property name="ssh-authorized-keys-file" type="string" required="false"
+                  _description="Path to a file containing authorized keys for SSH login" />
+        <property name="initially-open" type="bool" required="false"
+                  _description="Whether the SSH port is open from the start" />
+        <property name="port" type="int" required="false"
+                  _description="The port to listen on for incoming manhole connections" />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.plugs.identity.IdentityProviderPlug"
+          type="identityprovider-example"
+          _description="Shows how an identityprovider plug works.">
+      <entry location="flumotion/component/plugs/identity.py"
+             function="IdentityProviderExamplePlug" />
+    </plug>
+
+    <plug socket="flumotion.component.plugs.base.ComponentPlug"
+          type="component-example"
+          _description="Shows how a component plug works by printing to console.">
+      <entry location="flumotion/component/plugs/base.py"
+             function="ComponentExamplePlug" />
+    </plug>
+
+    <plug socket="flumotion.component.plugs.streamdata.StreamDataProviderPlug"
+          type="streamdataprovider-example"
+          _description="Shows how a streamdataprovider plug works.">
+      <entry location="flumotion/component/plugs/streamdata.py"
+             function="StreamDataProviderExamplePlug" />
+
+      <properties>
+        <property name="description" type="string" required="true"
+                  _description="Description of the stream" />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.plugs.rrd.ComponentRRDPlug"
+          type="component-rrd"
+          _description="Logs clients connected and bytes transferred to an RRD file. The RRD has 4 RRA's, roughly corresponding to 8 days, weeks, months, and years.">
+      <entry location="flumotion/component/plugs/rrd.py"
+             function="ComponentRRDPlug" />
+
+      <properties>
+          <property name="poll-interval" type="int" required="false"
+                    _description="time (in seconds) to update the RRD files; defaults to 60" />
+          <property name="step-size" type="int" required="false"
+                    _description="time (in seconds) between consolidations; defaults to 300" />
+          <property name="clients-connected-file" type="string" required="true"
+                    _description="absolute path to the RRD clients file" />
+          <property name="bytes-transferred-file" type="string" required="true"
+                    _description="absolute path to the RRD bytes transfered file" />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.plugs.requestmodifier.RequestModifierPlug"
+          type="requestmodifier-forcedownload"
+          _description="Force browsers to ask for download by injecting an HTTP header">
+      <entry location="flumotion/component/plugs/requestmodifier.py"
+             function="RequestModifierForceDownloadPlug" />
+
+      <properties>
+        <property name="argument-name" type="string" required="true"
+                  _description="HTTP GET argument to look for" />
+        <property name="trigger-value" type="string" required="false" multiple="true"
+                  _description="Argument value that will trigger force download" />
+      </properties>
+    </plug>
+
+  </plugs>
+
+  <bundles>
+    <bundle name="base-plugs">
+      <dependencies>
+        <dependency name="flumotion" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="__init__.py" />
+          <filename location="base.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-request">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="request.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-adminaction">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="adminaction.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="plugs-manager-manhole">
+      <dependencies>
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="manhole.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-identity">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="identity.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-streamdata">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="streamdata.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-rrd">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="rrd.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-plugs-requestmodifier">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs">
+          <filename location="requestmodifier.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+</registry>

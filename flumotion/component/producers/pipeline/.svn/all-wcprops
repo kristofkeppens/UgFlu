@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/producers/pipeline
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/pipeline/__init__.py
+END
+pipeline.xml
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/producers/pipeline/pipeline.xml
+END
+pipeline.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/pipeline/pipeline.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/2393/flumotion/trunk/flumotion/component/producers/pipeline/Makefile.am
+END

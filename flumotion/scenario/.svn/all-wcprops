@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/flumotion/svn/!svn/ver/7932/flumotion/trunk/flumotion/scenario
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/__init__.py
+END
+scenario.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7754/flumotion/trunk/flumotion/scenario/scenario.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7754/flumotion/trunk/flumotion/scenario/Makefile.am
+END

@@ -1,0 +1,56 @@
+<registry>
+	<components>
+		<component  type = "ldap-bouncer"
+					base = "flumotion/components/bouncers"
+					_description = "A bouncer using an LDAP server to authenticate against">
+		
+		<source location="flumotion.components.bouncers.ldapbouncer" />
+		
+		<entries>
+			<entry  type="component" location="ldapbouncer.py"
+					function="LdapBouncer" />
+			<entry  type="admin/gtk" location="admin_gtk.py"
+					function="GUIClass" />
+		</entries>
+		
+		<properties>
+			<property   name="ldap_server" type="string"
+						_description="A LDAP server to authenticate against" />
+			<property   name="dn" type="string"
+						_description= "dn for LDAP authentication" />
+			<property   name="pw" type="string"
+						_description="pw for LDAP authentication" />
+			<property   name="base_dn" type="string"
+						_description="base_dn to perform searches against"/>
+		</properties>
+		</component>
+	</components>
+	
+	<bundles>
+		<bundle name="ldapbouncer-component">
+			<dependencies>
+				<dependency name="component-base" />
+				<dependency name="deprecated-bouncer-base" />
+			</dependencies>
+			
+			<directories>
+				<directory name="flumotion/component/bouncers">
+					<filename location="ldapbouncer.py" />
+				</directory>
+			</directories>
+		</bundle>
+		<bundle name="ldapbouncer-admin-gtk">
+			<dependencies>
+				<dependency name="component-base" />
+				<dependency name="base-admin-gtk" />
+			</dependencies>
+			
+			<directories>
+				<directory name="flumotion/component/bouncers">
+					<filename location="admin_gtk.py" />
+					<filename location="bouncer.glade" />
+				</directory>
+			</directories>
+		</bundle>
+	</bundles>
+</registry>

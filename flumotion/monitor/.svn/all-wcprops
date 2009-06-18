@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/flumotion/svn/!svn/ver/7943/flumotion/trunk/flumotion/monitor
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/monitor/__init__.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/monitor/Makefile.am
+END

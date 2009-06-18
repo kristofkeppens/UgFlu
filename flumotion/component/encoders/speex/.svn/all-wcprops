@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/speex
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/encoders/speex/__init__.py
+END
+speex.xml
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/encoders/speex/speex.xml
+END
+wizard_gtk.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7268/flumotion/trunk/flumotion/component/encoders/speex/wizard_gtk.py
+END
+speex.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/encoders/speex/speex.py
+END

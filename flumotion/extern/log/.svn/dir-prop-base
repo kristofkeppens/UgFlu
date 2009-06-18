@@ -1,0 +1,9 @@
+K 10
+svn:ignore
+V 20
+
+*.pyc
+
+_trial_temp
+
+END

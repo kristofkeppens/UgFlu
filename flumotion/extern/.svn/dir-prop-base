@@ -1,0 +1,16 @@
+K 10
+svn:ignore
+V 46
+Makefile
+Makefile.in
+*.pyc
+*.pyo
+
+_trial_temp
+
+K 13
+svn:externals
+V 72
+command https://thomas.apestaart.org/moap/svn/trunk/moap/extern/command
+
+END

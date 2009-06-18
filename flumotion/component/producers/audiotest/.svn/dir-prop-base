@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 86
+Makefile
+Makefile.in
+*.pyc
+
+audiotest.gladep.bak
+audiotest.gladep
+audiotest.glade.bak
+
+END

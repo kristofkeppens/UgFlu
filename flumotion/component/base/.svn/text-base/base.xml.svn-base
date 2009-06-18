@@ -1,0 +1,69 @@
+<registry>
+  <bundles>
+    <bundle name="base-admin-gtk">
+      <dependencies>
+        <dependency name="flumotion" />
+        <dependency name="component-base" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/base">
+          <filename location="admin_gtk.py" />
+          <filename location="baseadminnode.py" />
+          <filename location="component.glade" />
+          <filename location="componentnode.py" />
+          <filename location="eatersnode.py" />
+          <filename location="eaters.glade" />
+          <filename location="effectsnode.py" />
+          <filename location="feedersnode.py" />
+          <filename location="feeders.glade" />
+          <filename location="properties.glade" />
+          <filename location="propertiesnode.py" />
+          <filename location="statewatcher.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-admin-text">
+      <dependencies>
+        <dependency name="flumotion" />
+        <dependency name="component-base" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/base">
+          <filename location="admin_text.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-component-http">
+      <dependencies>
+        <dependency name="flumotion" />
+        <dependency name="component-base" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/base">
+          <filename location="http.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-scheduler">
+      <dependencies>
+        <dependency name="flumotion" />
+        <dependency name="base-watcher" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/base">
+          <filename location="scheduler.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="base-watcher">
+      <dependencies>
+        <dependency name="flumotion" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/base">
+          <filename location="watcher.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+</registry>

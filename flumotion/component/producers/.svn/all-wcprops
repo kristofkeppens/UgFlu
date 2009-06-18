@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/flumotion/svn/!svn/ver/7936/flumotion/trunk/flumotion/component/producers
+END
+checks.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/checks.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/__init__.py
+END
+checks.xml
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/producers/checks.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/flumotion/svn/!svn/ver/6628/flumotion/trunk/flumotion/component/producers/Makefile.am
+END

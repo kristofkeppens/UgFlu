@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/misc/repeater
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/misc/repeater/__init__.py
+END
+repeater.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/misc/repeater/repeater.py
+END
+repeater.xml
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/misc/repeater/repeater.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/3210/flumotion/trunk/flumotion/component/misc/repeater/Makefile.am
+END

@@ -81,6 +81,21 @@ class IUsernameCryptPassword(credentials.ICredentials):
         password matches.
         """
 
+class UsernamePasswordPlaintext:
+  """
+  I take a username and a plaintext password.
+  I implement IUsernamePassword.  
+  """
+  
+  implements(IUsernamePassword)
+  
+  def __init__(self, username, password):
+    self.username = username
+    self.password = password
+    
+  def checkPassword(self, password):
+    return password == self.password
+  
 
 class UsernameCryptPasswordPlaintext:
     """

@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/flumotion/svn/!svn/ver/7875/flumotion/trunk/flumotion/component/converters/overlay
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/converters/overlay/__init__.py
+END
+xiph.24x24.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/894/flumotion/trunk/flumotion/component/converters/overlay/xiph.24x24.png
+END
+cc.36x36.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/948/flumotion/trunk/flumotion/component/converters/overlay/cc.36x36.png
+END
+xiph.36x36.png
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/948/flumotion/trunk/flumotion/component/converters/overlay/xiph.36x36.png
+END
+genimg.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7875/flumotion/trunk/flumotion/component/converters/overlay/genimg.py
+END
+overlay.py
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/flumotion/svn/!svn/ver/7875/flumotion/trunk/flumotion/component/converters/overlay/overlay.py
+END
+overlay.xml
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/converters/overlay/overlay.xml
+END
+fluendo.36x36.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/flumotion/svn/!svn/ver/7123/flumotion/trunk/flumotion/component/converters/overlay/fluendo.36x36.png
+END
+cc.24x24.png
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/894/flumotion/trunk/flumotion/component/converters/overlay/cc.24x24.png
+END
+Vera.ttf
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/flumotion/svn/!svn/ver/894/flumotion/trunk/flumotion/component/converters/overlay/Vera.ttf
+END
+fluendo.24x24.png
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/flumotion/svn/!svn/ver/7123/flumotion/trunk/flumotion/component/converters/overlay/fluendo.24x24.png
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/flumotion/svn/!svn/ver/1602/flumotion/trunk/flumotion/component/converters/overlay/Makefile.am
+END

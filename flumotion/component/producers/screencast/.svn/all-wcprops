@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/producers/screencast
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/component/producers/screencast/__init__.py
+END
+screencast.py
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/component/producers/screencast/screencast.py
+END
+screencast.xml
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/flumotion/svn/!svn/ver/7210/flumotion/trunk/flumotion/component/producers/screencast/screencast.xml
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/flumotion/svn/!svn/ver/5206/flumotion/trunk/flumotion/component/producers/screencast/Makefile.am
+END

@@ -1,0 +1,13 @@
+K 10
+svn:ignore
+V 63
+*.pyc
+*.pyo
+Makefile
+Makefile.in
+pytrayicon.c
+.libs
+.deps
+*.la
+
+END

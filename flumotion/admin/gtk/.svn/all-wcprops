@@ -1,0 +1,107 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/flumotion/svn/!svn/ver/7941/flumotion/trunk/flumotion/admin/gtk
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/6961/flumotion/trunk/flumotion/admin/gtk/__init__.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/flumotion/svn/!svn/ver/7762/flumotion/trunk/flumotion/admin/gtk/main.py
+END
+workerlist.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7239/flumotion/trunk/flumotion/admin/gtk/workerlist.py
+END
+basesteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7248/flumotion/trunk/flumotion/admin/gtk/basesteps.py
+END
+workerstep.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7248/flumotion/trunk/flumotion/admin/gtk/workerstep.py
+END
+adminwindow.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7941/flumotion/trunk/flumotion/admin/gtk/adminwindow.py
+END
+configurationassistant.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7805/flumotion/trunk/flumotion/admin/gtk/configurationassistant.py
+END
+statusbar.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7162/flumotion/trunk/flumotion/admin/gtk/statusbar.py
+END
+debugmarkerview.py
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/flumotion/svn/!svn/ver/6961/flumotion/trunk/flumotion/admin/gtk/debugmarkerview.py
+END
+greeter.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7763/flumotion/trunk/flumotion/admin/gtk/greeter.py
+END
+componentview.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7572/flumotion/trunk/flumotion/admin/gtk/componentview.py
+END
+message.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7177/flumotion/trunk/flumotion/admin/gtk/message.py
+END
+dialogs.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/flumotion/svn/!svn/ver/7833/flumotion/trunk/flumotion/admin/gtk/dialogs.py
+END
+overlaystep.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7875/flumotion/trunk/flumotion/admin/gtk/overlaystep.py
+END
+connections.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7568/flumotion/trunk/flumotion/admin/gtk/connections.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7628/flumotion/trunk/flumotion/admin/gtk/Makefile.am
+END
+componentlist.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7920/flumotion/trunk/flumotion/admin/gtk/componentlist.py
+END

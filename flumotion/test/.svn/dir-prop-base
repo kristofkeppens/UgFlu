@@ -1,0 +1,10 @@
+K 10
+svn:ignore
+V 46
+Makefile
+Makefile.in
+*.pyc
+_build
+integration
+
+END

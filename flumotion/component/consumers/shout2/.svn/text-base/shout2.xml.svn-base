@@ -1,0 +1,61 @@
+<registry>
+  <components>
+    <component type="shout2-consumer"
+               base="flumotion/component/consumers/shout2"
+               _description="A consumer that can stream to Icecast servers using shout2">
+      <source location="flumotion.component.consumers.shout2.shout2"/>
+
+      <eater name="default" />
+
+      <entries>
+        <entry type="component" location="shout2.py"
+               function="Shout2Consumer"/>
+      </entries>
+
+      <properties>
+	<property name="ip" type="string" required="no"
+		  _description="The IP address of the Icecast server." />
+	<property name="port" type="int" required="no"
+		  _description="The port on which the Icecast server is listening." />
+	<property name="password" type="string" required="no"
+                  _description="The password to authenticate to the the Icecast server." />
+	<property name="mount-point" type="string" required="yes"
+                  _description="The mount point on which to publish the stream." />
+	<property name="short-name" type="string" required="no"
+                  _description="A short name for the stream." />
+	<property name="description" type="string" required="no"
+                  _description="A description for the stream." />
+	<property name="url" type="string" required="no"
+                  _description="A URL to associate with the stream." />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="shout2-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/shout2">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="shout2-component">
+        <dependencies>
+            <dependency name="component"/>
+            <dependency name="shout2-base"/>
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/shout2">
+                <filename location="shout2.py"/>
+            </directory>
+        </directories>
+     </bundle>
+  </bundles>
+
+</registry>

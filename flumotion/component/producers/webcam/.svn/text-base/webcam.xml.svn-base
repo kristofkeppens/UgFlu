@@ -1,0 +1,114 @@
+<registry>
+  <components>
+    <component type="webcam-producer"
+               base="flumotion/component/producers/webcam"
+               _description="Produces a raw video feed from a webcam.">
+      <source location="flumotion.component.producers.webcam.webcam" />
+
+      <feeder name="default" />
+
+      <synchronization required="yes" />
+
+      <wizard type="video-producer" _description="Web camera"
+              feeder="default" />
+
+      <entries>
+        <entry type="component" location="webcam.py"
+               function="Webcam" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="WebcamWizardPlugin" />
+      </entries>
+
+      <properties>
+        <property name="device" type="string" required="yes"
+                  _description="The path to the device node from which to capture." />
+
+        <property name="mime" type="string"
+                  _description="The Mime type of video to produce (e.g. video/x-raw-yuv)." />
+        <property name="format" type="string"
+                  _description="The Colorspace fourcc to capture in." />
+
+        <property name="width" type="int"
+		  _description="The width of the video to capture." />
+        <property name="height" type="int"
+		  _description="The height of the video to capture." />
+        <property name="framerate" type="fraction"
+		  _description="The frame rate of the video to capture." />
+
+        <property name="element-factory" type="string" required="no"
+                  _description="The element factory from which to instantiate the capture element. Defaults to 'v4lsrc'" />
+
+<!-- FIXME: get these into an effect namespace ? -->
+        <property name="hue" type="int" required="no"
+                  _description="The hue of the video (0-65535)" />
+        <property name="saturation" type="int" required="no"
+                  _description="The saturation of the video (0-65535)" />
+        <property name="brightness" type="int" required="no"
+                  _description="The brightness of the video (0-65535)." />
+        <property name="contrast" type="int" required="no"
+                  _description="The contrast of the video (0-65535)." />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+
+    <bundle name="webcam-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/webcam">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="webcam-admin-gtk">
+        <dependencies>
+            <dependency name="webcam-base" />
+            <dependency name="base-admin-gtk" />
+            <dependency name="colorbalance-admin-gtk" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/webcam">
+                <filename location="admin_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="webcam-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="webcam-base" />
+            <dependency name="colorbalance-effect" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/webcam">
+                <filename location="webcam.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="webcam-wizard">
+        <dependencies>
+            <dependency name="webcam-base" />
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/webcam">
+                <filename location="wizard.glade" />
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+   </bundles>
+
+</registry>

@@ -32,7 +32,7 @@ from twisted.internet import reactor
 
 from flumotion.common import log, fxml
 
-__version__ = "$Rev: 7827 $"
+__version__ = "$Rev: 7849 $"
 
 
 class PlaylistItem(object, log.Loggable):
@@ -277,7 +277,8 @@ class PlaylistParser(object, log.Loggable):
     def _discoverPending(self):
 
         def _discovered(disc, is_media):
-            self.debug("Discovered! is media: %d", is_media)
+            self.debug("Discovered! is media: %d mime type %s", is_media,
+                disc.mimetype)
             reactor.callFromThread(_discoverer_done, disc, is_media)
 
         def _discoverer_done(disc, is_media):
@@ -293,8 +294,14 @@ class PlaylistParser(object, log.Loggable):
 
                 hasA = disc.is_audio
                 hasV = disc.is_video
-                durationDiscovered = min(disc.audiolength,
-                    disc.videolength)
+                durationDiscovered = 0
+                if hasA and hasV:
+                    durationDiscovered = min(disc.audiolength,
+                        disc.videolength)
+                elif hasA:
+                    durationDiscovered = disc.audiolength
+                elif hasV:
+                    durationDiscovered = disc.videolength
                 if not duration or duration > durationDiscovered:
                     duration = durationDiscovered
 

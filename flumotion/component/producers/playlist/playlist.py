@@ -24,7 +24,7 @@ import time
 import gst
 from twisted.internet import defer, reactor
 
-from flumotion.common import messages, fxml
+from flumotion.common import messages, fxml, gstreamer
 from flumotion.common.i18n import N_, gettexter
 from flumotion.component import feedcomponent
 from flumotion.component.base import watcher
@@ -33,7 +33,7 @@ import smartscale
 import singledecodebin
 import playlistparser
 
-__version__ = "$Rev: 7827 $"
+__version__ = "$Rev: 7935 $"
 T_ = gettexter()
 
 
@@ -123,10 +123,15 @@ class PlaylistProducer(feedcomponent.FeedComponent):
         self._vsrcs = {} # { PlaylistItem -> gnlsource }
         self._asrcs = {} # { PlaylistItem -> gnlsource }
 
+        self.uiState.addListKey("playlist")
+
     def _buildAudioPipeline(self, pipeline, src):
         audiorate = gst.element_factory_make("audiorate")
         audioconvert = gst.element_factory_make('audioconvert')
-        audioresample = gst.element_factory_make('audioresample')
+        resampler = 'audioresample'
+        if gstreamer.element_factory_exists('legacyresample'):
+            resampler = 'legacyresample'
+        audioresample = gst.element_factory_make(resampler)
         outcaps = gst.Caps(
             "audio/x-raw-int,channels=%d,rate=%d,width=16,depth=16" %
             (self._channels, self._samplerate))
@@ -332,6 +337,13 @@ class PlaylistProducer(feedcomponent.FeedComponent):
         self.debug("Done scheduling: start at %s, end at %s",
             _tsToString(start + self.basetime),
             _tsToString(start + self.basetime + item.duration))
+
+        self.uiState.append("playlist", (item.timestamp,
+                                         item.uri,
+                                         item.duration,
+                                         item.offset,
+                                         item.hasAudio,
+                                         item.hasVideo))
         return True
 
     def unscheduleItem(self, item):
@@ -344,16 +356,19 @@ class PlaylistProducer(feedcomponent.FeedComponent):
             asrc = self._asrcs.pop(item)
             self.audiocomp.remove(asrc)
             asrc.set_state(gst.STATE_NULL)
+        for entry in self.uiState.get("playlist"):
+            if entry[0] == item.timestamp:
+                self.uiState.remove("playlist", entry)
 
     def adjustItemScheduling(self, item):
         if self._hasVideo and item.hasVideo:
             vsrc = self._vsrcs[item]
-            vsrc.props.start = item.timestamp
+            vsrc.props.start = item.timestamp - self.basetime
             vsrc.props.duration = item.duration
             vsrc.props.media_duration = item.duration
         if self._hasAudio and item.hasAudio:
             asrc = self._asrcs[item]
-            asrc.props.start = item.timestamp
+            asrc.props.start = item.timestamp - self.basetime
             asrc.props.duration = item.duration
             asrc.props.media_duration = item.duration
 

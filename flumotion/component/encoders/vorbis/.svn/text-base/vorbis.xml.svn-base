@@ -1,0 +1,79 @@
+<registry>
+
+  <components>
+
+    <component type="vorbis-encoder"
+               base="flumotion/component/encoders/vorbis"
+               _description="An audio encoder that encodes to Vorbis.">
+      <source location="flumotion.component.encoders.vorbis.vorbis" />
+      <eater name="default" />
+      <feeder name="default" />
+      <properties>
+        <property name="bitrate" type="int"
+                  _description="The bit rate to encode at (in bps)." />
+        <property name="quality" type="float"
+                  _description="The quality to encode at (from -0.1 to 1.0).  This is only used if bitrate is not set." />
+        <property name="channels" type="int"
+                  _description="The number of audio channels to encode." />
+      </properties>
+      <entries>
+        <entry type="component" location="vorbis.py"
+               function="Vorbis" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="VorbisWizardPlugin" />
+      </entries>
+      <wizard _description="Vorbis" type="audio-encoder"
+              feeder="default" eater="default">
+        <provide-format media-type="vorbis" />
+      </wizard>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="vorbis-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/vorbis">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="vorbis-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="worker-checks" />
+            <dependency name="vorbis-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/vorbis">
+                <filename location="vorbis.py" />
+                <filename location="vorbisutils.py" />
+                <filename location="vorbis010.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="vorbis-wizard">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="vorbis-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/vorbis">
+                <filename location="wizard_gtk.py" />
+                <filename location="wizard.glade" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

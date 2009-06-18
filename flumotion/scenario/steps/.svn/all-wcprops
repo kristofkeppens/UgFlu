@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7932/flumotion/trunk/flumotion/scenario/steps
+END
+consumptionsteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/flumotion/svn/!svn/ver/7749/flumotion/trunk/flumotion/scenario/steps/consumptionsteps.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/steps/__init__.py
+END
+shout2steps.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/steps/shout2steps.py
+END
+productionsteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7809/flumotion/trunk/flumotion/scenario/steps/productionsteps.py
+END
+ondemandstep.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7736/flumotion/trunk/flumotion/scenario/steps/ondemandstep.py
+END
+steps.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7754/flumotion/trunk/flumotion/scenario/steps/steps.xml
+END
+diskersteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7667/flumotion/trunk/flumotion/scenario/steps/diskersteps.py
+END
+conversionsteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/flumotion/svn/!svn/ver/7788/flumotion/trunk/flumotion/scenario/steps/conversionsteps.py
+END
+summarysteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/steps/summarysteps.py
+END
+licensestep.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/scenario/steps/licensestep.py
+END
+httpstreamersteps.py
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/flumotion/svn/!svn/ver/7932/flumotion/trunk/flumotion/scenario/steps/httpstreamersteps.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7727/flumotion/trunk/flumotion/scenario/steps/Makefile.am
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/flumotion/svn/!svn/ver/7943/flumotion/trunk/flumotion/monitor/nagios
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/5969/flumotion/trunk/flumotion/monitor/nagios/__init__.py
+END
+process.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/flumotion/svn/!svn/ver/7943/flumotion/trunk/flumotion/monitor/nagios/process.py
+END
+main.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7822/flumotion/trunk/flumotion/monitor/nagios/main.py
+END
+stream.py
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/flumotion/svn/!svn/ver/7934/flumotion/trunk/flumotion/monitor/nagios/stream.py
+END
+log.py
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/flumotion/svn/!svn/ver/7331/flumotion/trunk/flumotion/monitor/nagios/log.py
+END
+util.py
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/flumotion/svn/!svn/ver/7404/flumotion/trunk/flumotion/monitor/nagios/util.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/flumotion/svn/!svn/ver/7406/flumotion/trunk/flumotion/monitor/nagios/Makefile.am
+END

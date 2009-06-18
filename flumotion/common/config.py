@@ -32,7 +32,7 @@ from flumotion.common import log, common, registry, fxml
 from flumotion.common.errors import ConfigError
 from flumotion.common.fraction import fractionFromValue
 
-__version__ = "$Rev: 7414 $"
+__version__ = "$Rev: 7850 $"
 
 
 def parsePropertyValue(propName, type, value):
@@ -157,8 +157,8 @@ def buildPlugsSet(plugsList, sockets):
     for plugType, propertyList in plugsList:
         plug = ConfigEntryPlug(plugType, propertyList)
         if plug.socket not in ret:
-            raise ConfigError("Unsupported socket type: %s"
-                              % (plug.socket, ))
+            raise ConfigError("Unsupported socket type: %s (not in list %s)"
+                              % (plug.socket, ", ".join(ret)))
         ret[plug.socket].append(plug.config)
     return ret
 
