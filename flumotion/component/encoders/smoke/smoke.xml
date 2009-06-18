@@ -1,0 +1,77 @@
+<registry>
+
+  <components>
+
+    <component type="smoke-encoder" base="flumotion/component/encoders/smoke"
+               _description="An encoder using JPEG frames and delta frames.">
+      <source location="flumotion.component.encoders.smoke.smoke" />
+      <eater name="default" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="smoke.py"
+               function="Smoke" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="SmokeWizardPlugin" />
+      </entries>
+      <wizard _description="Smoke" type="video-encoder"
+              feeder="default" eater="default">
+        <provide-format media-type="smoke"/>
+      </wizard>
+      <properties>
+        <property name="qmin" type="int"
+                  _description="The minimum JPEG quality (0-100 %. default: 10 %)." />
+        <property name="qmax" type="int"
+                  _description="The maximum JPEG quality (0-100 %. default: 85 %)." />
+        <property name="threshold" type="int"
+                  _description="The motion estimation threshold (0 - 10000000. default: 3000)."/>
+        <property name="keyframe" type="int"
+                  _description="How often a key frame should appear (in frames. default: 20)" />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="smoke-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/smoke">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="smoke-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="smoke-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/smoke">
+                <filename location="smoke.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="smoke-wizard">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="smoke-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/smoke">
+                <filename location="wizard_gtk.py" />
+                <filename location="wizard.glade" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

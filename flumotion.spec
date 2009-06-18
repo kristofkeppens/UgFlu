@@ -1,0 +1,335 @@
+%define         gst_minver      0.10.10
+%define         gstpb_minver    0.10.10
+%define         gstpy_minver    0.10.4
+%define         pygtk_minver    2.8.4
+%define         kiwi_minver     1.9.13
+
+%{!?gstreamer:  %define         gstreamer       gstreamer}
+
+Name:           flumotion
+Version:        0.5.4
+Release:        1
+Summary:        Streaming Server based on GStreamer and Twisted
+
+Group:          Applications/Internet
+License:	GPL
+URL:            http://www.flumotion.net/
+Source:         http://www.flumotion.net/src/flumotion/%{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+
+Requires:	python >= 2.3
+Requires:	%{gstreamer} >= %{gst_minver}
+Requires:	%{gstreamer}-plugins-base >= %{gstpb_minver}
+Requires:	%{gstreamer}-python >= %{gstpy_minver}
+Requires:	python-twisted-core >= 2.4.0
+Requires:	python-twisted-conch
+Requires:	python-dateutil
+Requires:	pygtk2-libglade
+Requires:	pygtk2 >= %{pygtk_minver}
+Requires:	python-imaging
+Requires:	pyOpenSSL
+Requires:	pkgconfig
+Requires:       python-crypto
+Requires:	python-kiwi >= %{kiwi_minver}
+
+# for make-dummy-cert to work
+Requires(post):	openssl
+
+BuildRequires:	%{gstreamer}-devel >= %{gst_minver}
+BuildRequires:	%{gstreamer}-python >= %{gstpy_minver}
+BuildRequires:	python-twisted-core >= 2.4.0
+BuildRequires:	python-twisted-names
+BuildRequires:	python-twisted-web
+BuildRequires:  python-twisted-conch
+BuildRequires:  python-dateutil
+BuildRequires:  pygtk2-libglade
+BuildRequires:	python-devel >= 2.3
+BuildRequires:	pygtk2-devel >= %{pygtk_minver}
+BuildRequires:	gtk2-devel
+BuildRequires:	python-kiwi >= %{kiwi_minver}
+
+# docs
+BuildRequires:	epydoc
+BuildRequires:  xorg-x11-server-Xvfb
+
+# sigh, libtool
+BuildRequires:  gcc-c++
+
+BuildRequires:	desktop-file-utils
+BuildRequires:	gettext
+BuildRequires:	intltool
+
+# since we compile pytrayicon, we're no longer noarch
+# BuildArch:	noarch
+
+%description
+Flumotion is a GPL streaming media server written in Python. It is distributed
+and component-based: every step in the streaming process (production,
+conversion, consumption) can be run inside a separate process on separate
+machines.
+
+Flumotion uses Twisted and GStreamer. Twisted enables the high-level
+functionality, distributing components over the network. GStreamer, through the
+Python bindings, enables the high-speed low-level functionality: actual media
+processing.
+
+Flumotion uses a central manager process to control the complete network; one
+or more worker processes distributed over machines to run actual streaming
+components; and one or more admin clients connecting to the manager to control
+it.
+
+To define the base name of GStreamer packages to build against
+(gstreamer or gstreamer010, depending on your distro), use e.g.:
+  --define 'gstreamer gstreamer010'
+
+%prep
+%setup -q
+
+%build
+%configure
+
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+# use DESTDIR so compiled python files get tagged correctly with their
+# final location
+make DESTDIR=$RPM_BUILD_ROOT install
+
+# desktop file
+desktop-file-install \
+  --vendor fedora \
+  --mode 644 \
+  --dir $RPM_BUILD_ROOT%{_datadir}/applications \
+  --add-category X-Fedora \
+  --delete-original \
+  $RPM_BUILD_ROOT%{_datadir}/applications/flumotion-admin.desktop
+
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/flumotion
+
+# install service files
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
+install -m 755 \
+	doc/redhat/flumotion \
+	$RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d
+
+# create log and run and cache and lib rrd directory
+install -d $RPM_BUILD_ROOT%{_localstatedir}/log/flumotion
+install -d $RPM_BUILD_ROOT%{_localstatedir}/run/flumotion
+install -d $RPM_BUILD_ROOT%{_localstatedir}/cache/flumotion
+install -d $RPM_BUILD_ROOT%{_localstatedir}/lib/flumotion/rrd
+
+# Install the logrotate entry
+%{__install} -m 0644 -D doc/redhat/flumotion.logrotate \
+    %{buildroot}%{_sysconfdir}/logrotate.d/flumotion
+
+%find_lang flumotion
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%pre
+/usr/sbin/useradd -s /sbin/nologin \
+	-r -d %{_localstatedir}/cache/flumotion -M \
+	flumotion > /dev/null 2> /dev/null || :
+# for old installs, we need to move the homedir
+/usr/sbin/usermod -d %{_localstatedir}/cache/flumotion \
+	flumotion > /dev/null 2> /dev/null || :
+
+%post
+/sbin/chkconfig --add flumotion
+# generate a default .pem certificate ?
+PEM_FILE="%{_sysconfdir}/flumotion/default.pem"
+if ! test -e ${PEM_FILE}
+then
+  sh %{_datadir}/flumotion/make-dummy-cert ${PEM_FILE}
+  chown :flumotion ${PEM_FILE}
+  chmod 640 ${PEM_FILE}
+fi
+
+# create a default planet config if no manager configs present
+# the default login will be user/test
+if ! test -e %{_sysconfdir}/flumotion/managers
+then
+  mkdir -p %{_sysconfdir}/flumotion/managers/default/flows
+  cat > %{_sysconfdir}/flumotion/managers/default/planet.xml <<EOF
+<planet>
+
+  <manager>
+    <!-- <debug>3</debug> -->
+    <host>localhost</host>
+<!--
+    <port>7531</port>
+    <transport>ssl</transport>
+-->
+    <!-- certificate path can be relative to $sysconfdir/flumotion,
+         or absolute -->
+<!--
+    <certificate>default.pem</certificate>
+-->
+    <component name="manager-bouncer" type="htpasswdcrypt-bouncer">
+      <property name="data"><![CDATA[
+user:PSfNpHTkpTx1M
+]]></property>
+    </component>
+  </manager>
+
+</planet>
+EOF
+fi
+
+# create a default worker config if no worker configs present
+# the default login will be user/test
+if ! test -e %{_sysconfdir}/flumotion/workers
+then
+  mkdir -p %{_sysconfdir}/flumotion/workers
+  cat > %{_sysconfdir}/flumotion/workers/default.xml <<EOF
+<worker>
+
+  <!-- <debug>3</debug> -->
+
+  <manager>
+<!--
+    <host>localhost</host>
+    <port>7531</port>
+-->
+  </manager>
+
+  <authentication type="plaintext">
+    <username>user</username>
+    <password>test</password>
+  </authentication>
+
+  <!-- <feederports>8600-8639</feederports> -->
+
+</worker>
+EOF
+
+fi
+
+%preun
+# if removal and not upgrade, stop the processes, clean up locks
+if [ $1 -eq 0 ]
+then
+  /sbin/service flumotion stop > /dev/null
+
+  rm -rf %{_localstatedir}/lock/flumotion*
+  rm -rf %{_localstatedir}/run/flumotion*
+
+  # clean out the cache/home dir too, without deleting it or the user
+  rm -rf %{_localstatedir}/cache/flumotion/*
+  rm -rf %{_localstatedir}/cache/flumotion/.[^.]*
+
+  /sbin/chkconfig --del flumotion
+fi
+
+# Think about this first, we don't really want to stop everything
+#%postun
+# if [ $1 -ge 1 ]; then
+#   /sbin/service flumotion condrestart
+# fi
+
+%files -f flumotion.lang
+%defattr(-,root,root,-)
+%doc ChangeLog COPYING README AUTHORS flumotion.doap
+%doc doc/reference/html
+%doc conf
+%config %{_sysconfdir}/logrotate.d/flumotion
+%{_bindir}/flumotion-manager
+%{_bindir}/flumotion-worker
+%{_bindir}/flumotion-admin
+%{_bindir}/flumotion-admin-text
+%{_bindir}/flumotion-command
+%{_bindir}/flumotion-tester
+%{_bindir}/flumotion-job
+%{_bindir}/flumotion-inspect
+%{_bindir}/flumotion-launch
+%{_bindir}/flumotion-rrdmon
+%{_bindir}/flumotion-nagios
+%{_sbindir}/flumotion
+
+%{_libdir}/flumotion
+%{_libdir}/pkgconfig/flumotion.pc
+
+%{_datadir}/applications/*.desktop
+%{_datadir}/pixmaps/*
+%{_mandir}/man1/flumotion*.1*
+
+%{_datadir}/flumotion/glade
+%{_datadir}/flumotion/image
+%{_datadir}/flumotion/make-dummy-cert
+%{_datadir}/flumotion/*.xsl
+%{_datadir}/flumotion/*.html
+%{_datadir}/hal/fdi/policy/20thirdparty/91-flumotion-device-policy.fdi
+
+%attr(750,root,flumotion) %{_sysconfdir}/flumotion
+%attr(770,root,flumotion) %{_localstatedir}/run/flumotion
+%attr(770,root,flumotion) %{_localstatedir}/log/flumotion
+%attr(770,root,flumotion) %{_localstatedir}/lib/flumotion
+%attr(770,root,flumotion) %{_localstatedir}/lib/flumotion/rrd
+%attr(770,flumotion,flumotion) %{_localstatedir}/cache/flumotion
+%{_sysconfdir}/rc.d/init.d/flumotion
+
+%changelog
+* Thu Oct 30 2008 Thomas Vander Stichele <thomas at apestaart dot org>
+- Add directory for rrd databases now that we have a plug for it.
+
+* Tue Jul 22 2008 Thomas Vander Stichele <thomas at apestaart dot org>
+- Add gettext buildrequires; looks like on RHEL5 intltool doesn't pull it in.
+
+* Wed Apr 02 2008 Thomas Vander Stichele <thomas at apestaart dot org>
+- Add intltool buildrequires
+
+* Wed Nov 28 2007 Johan Dahlin <johan at gnome dot org>
+- Add kiwi dependency and bump pygtk to 2.8.4
+
+* Fri Aug 24 2007 Zaheer Abbas Merali <zaheerabbas at merali dot org>
+- Add flumotion-nagios
+
+* Mon Jul 30 2007 Arek Korbik <arkadini at gmail dot com>
+- Add flumotion-rrdmon
+
+* Tue Jun 26 2007 Christian Schaller <christian at fluendo dot com>
+- Adding SELinux policy file for setting device access
+
+* Wed May 16 2007 Thomas Vander Stichele <thomas at apestaart dot org>
+- Add a python-crypto dependency for the sha256 bouncer
+
+* Mon Jan 22 2007 Andy Wingo <wingo at pobox.com>
+- Make the run, log, and cache directories group-writable, so that
+  processes can manage their own pid, log files, and registry caches.
+
+* Tue Dec 19 2006 Thomas Vander Stichele <thomas at apestaart dot org>
+- switch around to root:flumotion for ownership of various directories,
+  allowing users in the flumotion group to see logs and config
+- remove flumotion cache/home dir contents
+- clean up commenting in manager config
+
+* Sun Jun 18 2006 Thomas Vander Stichele <thomas at apestaart dot org>
+- only create default worker if there is not /etc/flumotion/workers
+- only create default manager if there is not /etc/flumotion/managers
+- make gstreamer versions defines
+- change flumotion home directory to /var/cache/flumotion
+
+* Fri Jul 29 2005 Thomas Vander Stichele <thomas at apestaart dot org>
+- added translations
+
+* Thu May 19 2005 Thomas Vander Stichele <thomas at apestaart dot org>
+- use disted make-dummy-cert
+
+* Mon Feb 14 2005 Christian Schaller <christian at fluendo dot com>
+- Add desktop file for admin tool and icon
+
+* Thu Nov 11 2004 Thomas Vander Stichele <thomas at apestaart dot org>
+- Integrate changes from issue 86
+
+* Fri Nov 05 2004 Christian Schaller <christian at fluendo com>
+- Add call to chkconfig script in post and preun parts to get our service into
+  the service list
+
+* Fri Nov 05 2004 Thomas Vander Stichele <thomas at apestaart dot org>
+- use DESTDIR install to fix python compiles
+
+* Mon Jun 07 2004 Thomas Vander Stichele <thomas at apestaart dot org>
+- first package

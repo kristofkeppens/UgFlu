@@ -1,0 +1,42 @@
+<registry>
+  <components>
+    <component type="ip-bouncer" base="flumotion/component/bouncers"
+               _description="A bouncer that authenticates based on remote IP address.">
+      <source location="flumotion.component.bouncers.ipbouncer"/>
+
+      <entries>
+      	<entry type="component" location="ipbouncer.py"
+		function="IPBouncer" />
+      </entries>
+      <properties>
+<!-- newlines are not preserved in descriptions -->
+        <property name="deny-default" type="bool" required="no"
+                  _description="Whether to default to denying authentication.
+Defaults to True, which is equivalent to Apache's 'Order Allow,Deny'"/>
+        <property name="allow" type="string" required="no" multiple="yes"
+                  _description="A match rule for allowing authentication. Match
+rules are IP blocks, such as 127.0.0.1/32."/>
+        <property name="deny" type="string" required="no" multiple="yes"
+                  _description="A match rule for denying authentication.
+This uses the same syntax as the allow rules."/>
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+
+    <bundle name="ipbouncer-component">
+        <dependencies>
+            <dependency name="component-base" />
+            <dependency name="deprecated-bouncer-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/bouncers">
+                <filename location="ipbouncer.py" />
+            </directory>
+        </directories>
+    </bundle>
+  </bundles>
+
+</registry>

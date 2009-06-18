@@ -1,0 +1,64 @@
+<registry>
+  <plugs>
+    <plug socket="flumotion.component.plugs.base.ComponentPlug"
+          type="component-cortado"
+          _description="Serves the embedded Cortado Java player.">
+      <entries>
+        <entry type="default"
+               location="flumotion/component/plugs/cortado/cortado.py"
+               function="ComponentCortadoPlug" />
+        <entry type="wizard"
+               location="flumotion/component/plugs/cortado/wizard_gtk.py"
+               function="CortadoWizardPlugin" />
+      </entries>
+      <wizard _description="Publish embedded Java player page" type="http-consumer"
+              feeder="default" eater="default">
+        <accept-format media-type="muxer:ogg"/>
+        <accept-format media-type="muxer:multipart"/>
+        <accept-format media-type="audio:vorbis"/>
+        <accept-format media-type="audio:mulaw"/>
+        <accept-format media-type="video:theora"/>
+        <accept-format media-type="video:jpeg"/>
+        <accept-format media-type="video:smoke"/>
+      </wizard>
+      <properties>
+        <property name="width" type="int" required="true"
+                  _description="The width of the cortado applet." />
+        <property name="height" type="int" required="true"
+                  _description="The height of the cortado applet." />
+        <property name="html-template" type="string"
+                  _description="A HTML template to use to serve the cortado applet." />
+        <property name="index" type="string"
+                  _description="The name of the index file. The default is index.html." />
+        <property name="has-audio" type="bool" required="true"
+                  _description="Whether audio should be streamed." />
+        <property name="has-video" type="bool" required="true"
+                  _description="Whether video should be streamed." />
+        <property name="stream-url" type="string" required="true"
+                  _description="The URL to the stream we are displaying." />
+        <property name="codebase" type="string" required="true"
+                  _description="The base URL used to fetch the cortado applet code." />
+        <property name="buffer-size" type="int" required="true"
+                  _description="The size of the buffer in the cortado applet." />
+                  <!-- FIXME: What is this? murrayc -->
+        <property name="framerate" type="float" required="false"
+                  _description="The frame rate used in the cortado applet." />
+                  <!-- FIXME: Isn't this determined by the stream that it gets? murrayc -->
+      </properties>
+    </plug>
+  </plugs>
+  <bundles>
+    <bundle name="component-cortado">
+      <dependencies>
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/plugs/cortado">
+          <filename location="__init__.py" />
+          <filename location="cortado.py" />
+          <filename location="wizard_gtk.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+</registry>

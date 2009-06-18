@@ -1,0 +1,215 @@
+<registry>
+  <plugs>
+    <plug socket="flumotion.component.misc.httpserver.ratecontrol.RateControllerPlug"
+          type="ratecontroller-fixed"
+          _description="Rate controls on demand streaming using a fixed bitrate.">
+      <entries>
+        <entry type="default"
+               location="flumotion/component/misc/httpserver/ratecontrol.py"
+               function="RateControllerFixedPlug" />
+      </entries>
+
+      <properties>
+        <property name="rate" required="true" type="int"
+                  _description="The average rate to send all files at, in bits per second." />
+        <property name="max-level" type="int"
+                  _description="The maximum amount of data to send at full rate at any given moment, in bits." /> <!-- TODO: Describe this better -->
+        <property name="initial-level" type="int"
+                  _description="The initial amount of data that can be sent at full speed, in bits." />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.misc.httpserver.fileprovider.FileProviderPlug"
+          type="fileprovider-local"
+          _description="Provides files from a local file system.">
+      <entries>
+        <entry type="default"
+               location="flumotion/component/misc/httpserver/localprovider.py"
+               function="FileProviderLocalPlug" />
+      </entries>
+
+      <properties>
+        <property name="path" type="string" required="true"
+                  _description="The base path to map to the mount-point" />
+      </properties>
+    </plug>
+
+    <plug socket="flumotion.component.misc.httpserver.fileprovider.FileProviderPlug"
+          type="fileprovider-localcached"
+          _description="Provides files from a locally mounted file system, with caching to a separate path.">
+      <entries>
+        <entry type="default"
+               location="flumotion/component/misc/httpserver/cachedprovider.py"
+               function="FileProviderLocalCachedPlug" />
+      </entries>
+
+      <properties>
+        <property name="path" type="string" required="true"
+                  _description="The base local path to serve from, mapped to the mount-point" />
+        <property name="cache-dir" type="string"
+                  _description="The directory where the files are cached.  Multiple components can share the same cache-dir, but then should also share the same cache-size." />
+        <property name="cache-size" type="int"
+                  _description="The maximum size of the cache directory (in MB, defaults to 1000)" />
+        <property name="cleanup-enabled" type="bool"
+                  _description="Whether the cache should be monitored and cleaned up; if False, files will be served from the original location instead of from the cache" />
+        <property name="cleanup-high-watermark" type="float"
+                  _description="Cache fill level that triggers cleanup (from 0.0 to 1.0, defaults to 1.0).  If more than one component share the same cache directory, it's recommended to use slightly different values for each." />
+        <property name="cleanup-low-watermark" type="float"
+                  _description="Cache fill level to drop back to after cleanup (from 0.0 to 1.0, defaults to 0.6)" />
+      </properties>
+    </plug>
+  </plugs>
+
+  <components>
+
+    <component type="http-server" base="flumotion/component/misc/httpserver"
+               _description="An on demand HTTP server.">
+      <source location="flumotion.component.misc.httpserver.httpserver" />
+      <entries>
+        <entry type="component" location="httpserver.py"
+               function="HTTPFileStreamer" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+      </entries>
+
+      <sockets>
+        <socket type="flumotion.component.plugs.request.RequestLoggerPlug"/>
+        <socket type="flumotion.component.plugs.base.ComponentPlug" />
+        <socket type="flumotion.component.plugs.streamdata.StreamDataProviderPlug"/>
+        <socket type="flumotion.component.plugs.rrd.ComponentRRDPlug" />
+        <socket type="flumotion.component.plugs.requestmodifier.RequestModifierPlug"/>
+        <socket type="flumotion.component.misc.httpserver.ratecontrol.RateControllerPlug"/>
+        <socket type="flumotion.component.misc.httpserver.fileprovider.FileProviderPlug"/>
+      </sockets>
+
+      <properties>
+         <!-- FIXME: the following comment is not valid anymore, right? -->
+         <!-- Warning: mount_point of / is broken -->
+        <property name="mount-point" type="string"
+                  _description="The mount point on which the stream can be accessed." />
+        <property name="path" type="string"
+                  _description="The base path to map to the mount-point" />
+
+        <property name="type" type="string"
+                  _description="'master' to listen on a port, or 'slave' to slave to a porter (default master)." />
+
+        <property name="hostname" type="string"
+                  _description="The server's host name to display." />
+
+        <property name="description" type="string"
+                  _description="The _description of the server." />
+
+        <property name="bouncer" type="string"
+                  _description="The name of a bouncer in the atmosphere to authenticate against." />
+        <property name="issuer-class" type="string"
+                  _description="The Python class of the Keycard issuer to use." />
+
+        <property name="ip-filter" type="string" multiple="yes"
+                  _description="The IP network-address/prefix-length to filter out of logs." />
+
+        <!-- If type is 'master' (default) -->
+        <property name="port" type="int"
+                  _description="The port to listen on (if type is 'master')." />
+
+        <!-- If type is 'slave' -->
+        <property name="porter-socket-path" type="string"
+                  _description="The path to the socket to communicate with the porter." />
+        <property name="porter-username" type="string"
+                  _description="The username to authenticate to the porter." />
+        <property name="porter-password" type="string"
+                  _description="The password to authenticate to the porter" />
+
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="http-server-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/misc/httpserver">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+   </bundle>
+
+    <bundle name="http-server-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="http-server-base" />
+            <dependency name="base-component-http" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/misc/httpserver">
+                <filename location="fileprovider.py" />
+                <filename location="httpfile.py" />
+                <filename location="httpserver.py" />
+                <filename location="serverstats.py" />
+                <!--
+                  http-server-component depend on localprovider.py because
+                  it's the default file provider used when no plug is specified
+                -->
+                <filename location="localpath.py" />
+                <filename location="localprovider.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="http-server-admin-gtk">
+        <dependencies>
+            <dependency name="base-admin-gtk" />
+            <dependency name="http-server-base" />
+        </dependencies>
+        <directories>
+            <directory name="flumotion/component/misc/httpserver">
+                <filename location="admin_gtk.py" />
+                <filename location="httpserver.glade" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="ratecontroller-fixed">
+      <dependencies>
+        <dependency name="http-server-component" />
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/misc/httpserver">
+          <filename location="ratecontrol.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="local-provider-plug">
+      <dependencies>
+        <dependency name="http-server-component" />
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/misc/httpserver">
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="cached-provider-plug">
+      <dependencies>
+        <dependency name="http-server-component" />
+        <dependency name="base-plugs" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/misc/httpserver">
+          <filename location="cachedprovider.py" />
+          <filename location="cachestats.py" />
+        </directory>
+      </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

@@ -1,0 +1,147 @@
+.\" Process this file with
+.\" groff -man -Tascii flumotion-manager.1
+.\"
+.TH flumotion-manager 1 "2005 July 13" "Fluendo" "Flumotion"
+
+.SH NAME
+flumotion-manager \- streaming media server central management
+
+.SH SYNOPSIS
+.B flumotion-manager
+[
+.B -
+]
+[
+.B --debug
+.I debug configuration
+]
+[
+.B -H
+.I host
+]
+[
+.B -P
+.I port
+]
+[
+.B -T
+.I protocol
+]
+[
+.B -C
+.I certificate
+]
+[
+.B -n
+.I name
+]
+[
+.B -D
+]
+.I manager.xml [flow1.xml flow2.xml ...]
+
+.SH DESCRIPTION
+.B flumotion-manager
+is the central management component of the flumotion streaming server.
+.B flumotion-manager
+does not actually perform any streaming or encoding itself, it simply
+acts as a central point for
+.I flumotion-worker
+instances
+and
+.I flumotion-admin
+administration consoles to connect to. You need to start it before any other
+flumotion component. When starting flumotion-manager, you need only specify a
+.I planet configuration file
+, but it is frequently helpful to set other options from the command line.
+
+.B flumotion-manager
+can load other configuration files as well, if more than one is specified. These
+additional configuration files define
+.I flows
+that the manager will run on the workers. This allows you to define your manager
+configuration in the first configuration file, and your streaming configuration
+or configurations in one or more additional configurations files.
+
+.SH OPTIONS
+.IP "-h, --help"
+Show a brief help message, then exit.
+.IP "--version"
+Show the version number.
+.IP "-v, --verbose"
+Be verbose in console output. This is equivalent to setting the debug level to
+3, and will override any debug specifiers.
+.IP "-dDEBUG, --debug=DEBUG"
+Set the debug configuration to the specified
+.B debug
+string. See the
+.I Debugging
+section for details of this.
+.IP "-HHOST, --hostname=HOST"
+Specify the interface to bind to, either as a hostname or a numeric address.
+Usually, unless you have multiple network connections, you won't want to set
+this at all. Defaults to binding to all interfaces.
+.IP "-PPORT, --port=PORT"
+Set the port the manager should listen on. Default is 7531 if SSL is being used,
+or 8642 otherwise.
+.IP "-TTRANSPORT, --transport=TRANSPORT"
+Set the transport protocol to use, either 'tcp' or 'ssl'. Default is 'ssl'.
+.IP "-CCERTIFICATE, --certificate=CERTIFICATE"
+Specify the PEM certificate file to use. This is required if you use SSL.
+.IP "-nNAME, --name=NAME"
+Set the manager name.
+.IP "-D, --daemonize"
+Run in the background as a daemon.
+
+.SH DEBUGGING
+
+In the unlikely event of something in flumotion not working, you might want to
+debug it. The flumotion tools (
+.B flumotion-worker
+,
+.B flumotion-admin
+, and
+.B flumotion-manager
+) all alow you to turn on debugging output in two different ways.
+
+Firstly, you can use an environment variable, FLU_DEBUG. Secondly, you can
+launch the program with a -d or --debug switch. Either approach allows you to
+specify a debug configuration string with the following syntax:
+
+.RS
+.B name1:n1,name2:n2,name3:n3
+.RE
+
+In this syntax, the 'name' variables can be replaced with the name of a
+particular module within flumotion (such as 'admin', 'twisted', etc.). You can
+also use '*' to specify all modules. The 'n' variables are numbers from 1 to 5,
+larger numbers corresponding to more verbose output (ERROR, WARN, INFO, DEBUG,
+and LOG). At level 4, full debugging information is emitted.
+
+You can also use an abbreviated form where you just supply a single number, thisuses that debug level for all modules. Thus the simplest way to enable full
+debug output for all modules is to use '-d 4' on the command line.
+
+A more complex example would be '-d *:3,admin:4' to set the logging level for
+the admin module to DEBUG, and for all other modules to INFO.
+
+.SH EXAMPLES
+
+Simple example, starting flumotion-manager using TCP, in verbose mode:
+
+.RS
+flumotion-manager -v -T tcp conf/managers/default/planet.xml
+.RE
+
+A slightly more complex example, using two different configuration files and
+running in the background:
+
+.RS
+flumotion-manager -T tcp -D conf/managers/default/planet.xml conf/managers/mystream.xml
+
+.SH BUGS
+Hopefully none. If you find any bugs, please report them at
+https://core.fluendo.com/trac/cgi-bin/trac.cgi
+
+.SH SEE ALSO
+
+.BR flumotion(1),flumotion-worker(1),flumotion-admin(1)

@@ -1,0 +1,113 @@
+<registry>
+  <components>
+    <component type="videotest-producer"
+               base="flumotion/component/producers/videotest"
+               _description="Produces an example video signal without using a device.">
+      <source location="flumotion.component.producers.videotest.videotest" />
+
+      <feeder name="default" />
+
+      <synchronization required="yes" />
+
+      <wizard type="video-producer" feeder="default"
+              _description="Test video producer"/>
+
+      <entries>
+        <entry type="component" location="videotest.py"
+               function="VideoTest" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+        <entry type="admin/text" location="admin_text.py"
+               function="UIClass" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="VideoTestWizardPlugin" />
+      </entries>
+
+      <properties>
+        <property name="height" type="int"
+                  _description="The height in pixels." />
+        <property name="width" type="int"
+                  _description="The width in pixels." />
+        <property name="framerate" type="fraction"
+                  _description="The video frame rate as numerator/denominator." />
+	<property name="pixel-aspect-ratio" type="fraction"
+		  _description="The video pixel aspect ratio as numerator/denominator." />
+        <property name="format" type="string"
+                  _description="Video format" />
+        <property name="pattern" type="int"
+                  _description="Thhe test pattern to show (smpte/snow/black/...)." />
+        <property name="drop-probability" type="float"
+                  _description="The fraction of buffers to drop (0.0 - 1.0). Only useful for debugging." />
+        <property name="overlay-timestamps" type="bool"
+                  _description="Whether to overlay buffer timestamps." />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+
+    <bundle name="videotest-producer-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/videotest">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="videotest-producer-admin-gtk">
+      <dependencies>
+        <dependency name="videotest-producer-base" />
+        <dependency name="base-admin-gtk" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/producers/videotest">
+          <filename location="admin_gtk.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="videotest-producer-admin-text">
+      <dependencies>
+        <dependency name="videotest-producer-base" />
+        <dependency name="base-admin-text" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/producers/videotest">
+           <filename location="admin_text.py" />
+        </directory>
+      </directories>
+    </bundle>
+    <bundle name="videotest-producer-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="videotest-producer-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/videotest">
+                <filename location="videotest.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="videotest-wizard">
+        <dependencies>
+            <dependency name="videotest-producer-base" />
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/videotest">
+                <filename location="wizard.glade" />
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

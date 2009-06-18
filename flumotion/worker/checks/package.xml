@@ -1,0 +1,18 @@
+<registry>
+  <bundles>
+    <bundle name="worker-checks">
+      <directories>
+        <directory name="flumotion/worker/checks">
+          <filename location="check.py" />
+          <filename location="encoder.py" />
+          <filename location="video.py" />
+	  <filename location="audio.py" />
+          <filename location="gst010.py" />
+          <filename location="cortado.py" />
+          <filename location="http.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+
+</registry>

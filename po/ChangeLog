@@ -1,0 +1,48 @@
+2009-03-25  Pedro Gracia  <pedro@flumotion.com>
+
+	* es.po: update.
+
+2009-03-25  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+
+	* POTFILES.in: remove a reference to http-wizard.glade
+
+2008-12-29  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+
+	* LINGUAS: remove the german translation from LINGUAS. Fixes #1052
+	* nb.po (added):
+	* no.po (deleted): rename the norwegian bokmål translation from no.po
+	to nb.po. Fixes #1152
+
+2008-05-08  Johan Dahlin  <johan@gnome.org>
+
+	* POTFILES.in: Add a couple of missing files, mentioned in #957
+
+2008-04-15  Johan Dahlin  <johan@gnome.org>
+
+	* POTFILES.in: Update, add dirac files
+
+2008-02-28  Johan Dahlin  <johan@gnome.org>
+
+	* sv.po: Fix a few typos in the swedish translation.
+
+2008-02-15  Johan Dahlin  <johan@gnome.org>
+
+	* pt_BR.po: The gtk+ translation for next in the wizard is 'Frente'.
+
+2008-02-07  Johan Dahlin  <johan@gnome.org>
+
+	* POTFILES.in: Update
+
+2008-01-31  Johan Dahlin  <johan@gnome.org>
+
+	* POTFILES.in: Update
+
+2008-01-11  Johan Dahlin  <johan@gnome.org>
+
+	* sv.po: Update swedish translation.
+
+	* POTFILES.in: Add missing files which intltool now warns us about.
+
+2008-01-11  Johan Dahlin  <johan@gnome.org>
+
+	* ChangeLog: add new separate changelog, since intltool requires it

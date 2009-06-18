@@ -1,0 +1,12 @@
+<registry>
+  <bundles>
+    <bundle name="flumotion">
+      <directories>
+        <directory name="flumotion">
+          <filename location="__init__.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+
+</registry>

@@ -1,0 +1,120 @@
+<registry>
+  <components>
+    <component type="disk-consumer"
+               base="flumotion/component/consumers/disker"
+               _description="A consumer that archives a stream to disk.">
+      <source location="flumotion.component.consumers.disker.disker" />
+
+      <eater name="default" />
+
+      <entries>
+        <entry type="component" location="disker.py"
+               function="Disker" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+        <entry type="admin/text" location="admin_text.py"
+              function="UIClass" />
+      </entries>
+
+      <sockets>
+        <socket type="flumotion.component.consumers.disker.disker_plug.DiskerPlug" />
+      </sockets>
+
+      <properties>
+        <property name="directory" type="string" required="yes"
+                  _description="The directory to which to save the archives." />
+        <property name="rotate-type" type="string" required="no"
+                  _description="'size', 'time', or 'none' (default 'none')." />
+        <property name="size" type="long"
+                  _description="The maximum size of each file (in bytes)." />
+        <property name="time" type="long"
+                  _description="The maximum duration of each file (in seconds)." />
+        <property name="start-recording" type="bool" required="no"
+                  _description="Whether to start recording when the component starts (defaults to True)."/>
+        <property name="symlink-to-last-recording" type="string" required="no"
+                  _description="If set, this symlink will be created and will point to the latest finished recording." />
+        <property name="symlink-to-current-recording" type="string"
+                  required="no"
+                  _description="If set, this symlink will be created and will point to the latest started recording." />
+        <property name="ical-schedule" type="string" required="no"
+                  _description="If set, the given iCalendar schedule will be used to decide when to record.  Every event defined indicates a recording, and the event description will be used as the filename template. "/>
+        <property name="filename" type="string" required="no" 
+                  _description="If set, the given template will be used to decide filenames for recordings.  The template will be expanded according to strftime(3)." />
+        <property name="react-to-stream-markers" type="bool" required="no"
+                  _description="Whether to start/stop the disker when stream marker events are received." />
+        <property name="stream-marker-filename-prefix" type="string"
+                  required="no" _description="The formatting template for the program id (default '%03d.')." />
+      </properties>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="disker-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/disker">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="disker-admin-gtk">
+        <dependencies>
+            <dependency name="base-admin-gtk"/>
+	        <dependency name="disker-base"/>
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/disker">
+                <filename location="admin_gtk.py"/>
+                <filename location="disker.glade"/>
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="disker-admin-text">
+        <dependencies>
+                <dependency name="base-admin-text"/>
+                <dependency name="disker-base"/>
+        </dependencies>
+
+        <directories>
+                <directory name="flumotion/component/consumers/disker">
+                        <filename location="admin_text.py" />
+                </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="disker-component">
+        <dependencies>
+            <dependency name="component"/>
+            <dependency name="disker-base"/>
+	    <dependency name="base-scheduler"/>
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/disker">
+                <filename location="disker.py"/>
+            </directory>
+        </directories>
+     </bundle>
+
+    <bundle name="disker-plug">
+      <dependencies>
+        <dependency name="base-plugs" />
+        <dependency name="disker-base"/>
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/consumers/disker">
+          <filename location="disker_plug.py"/>
+        </directory>
+      </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>
+

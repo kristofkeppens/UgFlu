@@ -1,0 +1,45 @@
+<registry>
+  <components>
+    <component type="preview-consumer"
+               base="flumotion/component/consumers/preview"
+               _description="Play back an encoded feed (currently only video).">
+      <source location="flumotion.component.consumers.preview.preview"/>
+
+      <eater name="default"/>
+
+      <entries>
+        <entry type="component" location="preview.py"
+               function="Preview"/>
+      </entries>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="preview-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/preview">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="preview-component">
+        <dependencies>
+            <dependency name="component"/>
+            <dependency name="preview-base"/>
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/consumers/preview">
+                <filename location="preview.py"/>
+            </directory>
+        </directories>
+     </bundle>
+  </bundles>
+
+</registry>
+

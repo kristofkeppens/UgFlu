@@ -1,0 +1,99 @@
+<registry>
+  <components>
+    <component type="firewire-producer"
+               base="flumotion/component/producers/firewire"
+               _description="Produces feeds from a Firewire/DV device.">
+      <source location="flumotion.component.producers.firewire.firewire" />
+      <feeder name="audio" />
+      <feeder name="video" />
+      <feeder name="dv" />
+      <entries>
+        <entry type="component" location="firewire.py"
+               function="Firewire" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="GUIClass" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="FireWireWizardPlugin" />
+      </entries>
+
+      <synchronization required="yes" clock-priority="160" />
+
+      <wizard type="audio-producer" _description="Firewire audio"
+              feeder="audio" />
+      <wizard type="video-producer" _description="Firewire video"
+              feeder="video" />
+
+      <properties>
+        <property name="height" type="int"
+                  _description="The height to scale to." />
+        <property name="width" type="int"
+                  _description="The final width, including correction." />
+        <property name="scaled-width" type="int"
+                  _description="The width to scale to before correcting." />
+        <property name="is-square" type="bool"
+                  _description="Whether to scale to a 1:1 pixel aspect ratio." />
+        <property name="framerate" type="fraction"
+                  _description="The framerate (in fps)."/>
+        <property name="guid" type="string"
+                  _description="The GUID of the device (a hexadecimal such as 0xhhhhhhhhhhhhhhhh)." />
+      </properties>
+    </component>
+  </components>
+  <bundles>
+    <bundle name="firewire-base">
+       <dependencies>
+           <dependency name="component-base" />
+       </dependencies>
+
+       <directories>
+           <directory name="flumotion/component/producers/firewire">
+               <filename location="__init__.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="firewire-admin-gtk">
+       <dependencies>
+           <dependency name="firewire-base" />
+           <dependency name="base-admin-gtk" />
+           <dependency name="volume-admin-gtk" />
+       </dependencies>
+
+       <directories>
+           <directory name="flumotion/component/producers/firewire">
+               <filename location="admin_gtk.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="firewire-component">
+       <dependencies>
+           <dependency name="component" />
+           <dependency name="firewire-base" />
+           <dependency name="volume-effect" />
+           <dependency name="producer-checks" />
+       </dependencies>
+
+       <directories>
+           <directory name="flumotion/component/producers/firewire">
+               <filename location="firewire.py" />
+           </directory>
+       </directories>
+    </bundle>
+
+    <bundle name="firewire-wizard">
+        <dependencies>
+            <dependency name="firewire-base" />
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/firewire">
+                <filename location="wizard.glade" />
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+</registry>

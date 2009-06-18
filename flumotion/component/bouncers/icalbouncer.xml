@@ -1,0 +1,35 @@
+<registry>
+  <components>
+    <component type="ical-bouncer"
+               base="flumotion/component/bouncers"
+               _description="A bouncer that allows access to a stream when there is an event in the iCalendar file.">
+
+      <source location="flumotion.component.bouncers.icalbouncer" />
+
+      <entries>
+        <entry type="component" location="icalbouncer.py"
+               function="IcalBouncer" />
+      </entries>
+
+      <properties>
+        <property name="file" type="string" required="yes"
+                  _description="The path to an iCalendar file to use." />
+      </properties>
+    </component>
+  </components>
+  <bundles>
+    <bundle name="icalbouncer-base">
+      <dependencies>
+        <dependency name="component" />
+	<dependency name="base-scheduler" />
+        <dependency name="deprecated-bouncer-base" />
+      </dependencies>
+      <directories>
+        <directory name="flumotion/component/bouncers">
+          <filename location="icalbouncer.py" />
+        </directory>
+      </directories>
+    </bundle>
+  </bundles>
+</registry>
+

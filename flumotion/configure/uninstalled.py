@@ -1,0 +1,62 @@
+# -*- Mode: Python; test-case-name: flumotion.test.test_flumotion_config -*-
+# vi:si:et:sw=4:sts=4:ts=4
+#
+# Flumotion - a streaming media server
+# Copyright (C) 2004,2005,2006,2007 Fluendo, S.L. (www.fluendo.com).
+# All rights reserved.
+
+# This file may be distributed and/or modified under the terms of
+# the GNU General Public License version 2 as published by
+# the Free Software Foundation.
+# This file is distributed without any warranty; without even the implied
+# warranty of merchantability or fitness for a particular purpose.
+# See "LICENSE.GPL" in the source distribution for more information.
+
+# Licensees having purchased or holding a valid Flumotion Advanced
+# Streaming Server license may use this file in accordance with the
+# Flumotion Advanced Streaming Server Commercial License Agreement.
+# See "LICENSE.Flumotion" in the source distribution for more information.
+
+# Headers in this file shall remain intact.
+
+import os
+from flumotion.common.log import safeprintf
+
+
+def get():
+    # where am I on the disk ?
+    __thisdir = os.path.dirname(os.path.abspath(__file__))
+    # toplevel dir
+    __toplevel = os.path.normpath(os.path.join(__thisdir, '..', '..'))
+
+    __toplevelwrite = __toplevel
+
+    # distcheck hack: if our __toplevel contains a directory _build, it means
+    # it was generated in distcheck mode and we should write everything
+    # under the writable builddir
+    # Don't change this without testing distcheck on an add-on project!
+    if os.path.exists(os.path.join(__toplevel, '_build')):
+        __toplevelwrite = os.path.join(__toplevel, '_build')
+
+    __cachedir = os.environ.get('FLU_CACHE_DIR',
+                                os.path.join(__toplevelwrite, 'cache'))
+
+    ret = {
+        'isinstalled': False,
+        'cachedir': os.path.join(__cachedir),
+        'configdir': os.path.join(__toplevel, 'conf'),
+        'daemondir': os.path.join(__toplevelwrite),
+        'datadir': os.path.join(__toplevel, 'data'),
+        'gladedir': os.path.join(__toplevel, 'data', 'glade'),
+        'imagedir': os.path.join(__toplevel, 'data', 'image'),
+        'logdir': os.path.join(__toplevelwrite, 'log'),
+        'localedatadir': os.path.join(__toplevelwrite),
+        'pythondir': os.path.join(__toplevel),
+        'registrydir': os.path.join(__cachedir, 'registry'),
+        'rundir': os.path.join(__toplevelwrite, 'run'),
+        'bindir': os.path.join(__toplevelwrite, 'bin'),
+        'sbindir': os.path.join(__toplevelwrite, 'bin'),
+        'version': '0.5.4',
+    }
+
+    return ret

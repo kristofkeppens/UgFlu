@@ -1,0 +1,182 @@
+Flumotion - your streaming media server
+
+WHAT IT IS
+----------
+
+Flumotion is a streaming media server based on GStreamer and Twisted.
+
+This is the first public development series of Flumotion.
+It will probably still contain bugs, be difficult to install (since
+you need recent dependencies), and cause you some headaches.
+
+On the other hand, when it works and you are capturing your Firewire camera
+on one machine, encoding to Theora on a second (with an overlay, of course),
+encoding the audio to Vorbis on a third, muxing to Ogg on a fourth, and then
+streaming both audio and video from a fifth, audio only from a sixth,
+video only from a seventh, and capturing all three streams to disk from
+an eigth, you feel very good about yourself.
+
+And you also have too many computers.
+
+REQUIREMENTS
+------------
+
+You need:
+
+Gstreamer: you need GStreamer version 0.10.10 or higher. 0.10.11 or higher is
+strongly recommended.
+
+For 0.10.x:
+  GStreamer: 0.10.10 or higher
+  GStreamer plugins base 0.10.10 or higher
+  GStreamer plugins good 0.10.1 or higher
+  GStreamer python bindings 0.10.1 or higher
+
+PyGTK - 2.8.3 or higher
+Python - 2.3 or higher
+Twisted - 2.0.1 or higher
+Kiwi - 1.9.13 or higher
+Python Imaging Library
+
+And depending on what codecs you want to use:
+
+libvorbis 1.0.1 or higher
+libogg 1.1 or higher
+libtheora 1.0alpha3 or higher
+
+And if you want to build documentation:
+
+epydoc
+
+And if you want support for java applets:
+
+cortado
+
+ISSUES
+------
+
+Some issues have been brought to our attention.  Please take note if you
+run into them:
+- locales with a comma as a decimal point trigger problems in the XML parsing.
+  Run with LANG=C if you run into this
+- When encoding to Vorbis, prefer to use quality instead of absolute bitrate.
+  For absolute bitrate, for each sample rate a limited range of bitrates is
+  allowed.
+- You may see memory leaks if you use the soundcard or firewire source
+  components, and you use PyGTK prior to 0.8.5, or gst-python prior to 0.10.3,
+  so upgrading to these versions is strongly recommended.
+
+A FIRST TEST
+------------
+
+Once everything is built and installed,
+you can try this to start the server:
+
+terminal 1:
+  flumotion-manager -v -T tcp conf/managers/default/planet.xml
+
+terminal 2:
+  flumotion-worker -v -T tcp -u user -p test
+
+terminal 3:
+  flumotion-admin -
+  Unselect 'Secure connection via SSL', press Next, then enter "user" and
+  "test" in the dialog.
+
+  Go through the wizard, chosing defaults.
+
+  Double-click the http component after the wizard has completed
+
+terminal 4:
+  gst-launch playbin uri=http://localhost:8800
+
+  Some systems may not have gst-launch, but only gst-launch-0.8 or
+  gst-launch-0.10, in that case you can substitute either of those commands.
+
+  Alternatively, you can use any theora-enabled network player to see the
+  stream.
+
+terminal 5:
+  for a in `seq 1 9`; do ( flumotion-tester http://localhost:8800 & ); done
+
+  This will throw 9 processes with 100 clients each at the server.  Hopefully,
+  all of them will return success at the end of their run!
+
+  We use 900 clients rather than a nice round number such as 1000 because, with
+  a standard unix system, you'll usually be limited to slightly under 1000
+  clients by default due to limits on open file descriptors (each client
+  requires a file descriptor). This limit is changable, but it's simpler to just
+  test with slightly fewer clients.
+
+DOCUMENTATION
+-------------
+
+A manual is being written.  You can access the current work in progress at
+http://www.flumotion.net/doc/flumotion/manual/html/
+
+Flumotion also comes with API documentation.  You need epydoc to build them.
+
+HACKING
+-------
+
+You can use jhbuild with the flu.modules and jhbuildrc file provided in misc/
+
+This will set up everything except for Twisted for you from source.
+
+SECURITY
+--------
+
+Read the security chapter in the aforementioned manual to get started.
+
+Flumotion uses SSL transport by default.  For this you need a PEM certificate
+file.  For security reasons you should generate this yourself when installing
+from source.
+
+The sample configuration file for the manager contains some htpasswd-style
+crypted credentials, for a user named "user" and a password "test".  Use
+these only for testing; make sure you change them before putting Flumotion
+into production.
+
+The sample configuration also only allows localhost connections, to make
+sure you change the configuration before moving it into production.
+Remove the host entry from the sample planet.xml file to allow other hosts
+to connect.
+
+ABOVE AND BEYOND
+----------------
+
+You can subscribe to our development list.  Information is at
+http://lists.fluendo.com/mailman/listinfo/flumotion-devel
+
+You can visit us on IRC: #fluendo on irc.freenode.org
+
+You can visit our trac installation for the Wiki, source browsing and
+ticket tracking:
+https://core.fluendo.com/flumotion/trac
+
+LICENSING
+---------
+
+This version of the Flumotion Streaming Server is dual-licensed.
+
+The GPL applies to all code files shipped with this version.
+See LICENSE.GPL
+
+The files may only be used together with or as part of the Flumotion
+Advanced Streaming Server:
+- under the terms of the Flumotion Advanced Streaming Server Commercial
+  License Agreement; and
+- when you have purchased or hold a valid Flumotion Advanced Streaming Server
+  license.
+
+If the conditions of this licensing strategy are not clear to you, please
+contact Thomas Vander Stichele (thomas@fluendo.com).
+
+TESTING
+-------
+For testing purposes of your streams, you can run some GStreamer pipelines
+to verify if things work as they should.
+
+- multipart/jpeg stream (video only):
+  gst-launch -v gnomevfssrc location=http://localhost:8802 ! multipartdemux ! jpegdec ! xvimagesink
+

@@ -1,0 +1,64 @@
+# -*- Mode: Python; test-case-name: flumotion.test.test_flumotion_config -*-
+# vi:si:et:sw=4:sts=4:ts=4
+#
+# Flumotion - a streaming media server
+# Copyright (C) 2004,2005,2006,2007 Fluendo, S.L. (www.fluendo.com).
+# All rights reserved.
+
+# This file may be distributed and/or modified under the terms of
+# the GNU General Public License version 2 as published by
+# the Free Software Foundation.
+# This file is distributed without any warranty; without even the implied
+# warranty of merchantability or fitness for a particular purpose.
+# See "LICENSE.GPL" in the source distribution for more information.
+
+# Licensees having purchased or holding a valid Flumotion Advanced
+# Streaming Server license may use this file in accordance with the
+# Flumotion Advanced Streaming Server Commercial License Agreement.
+# See "LICENSE.Flumotion" in the source distribution for more information.
+
+# Headers in this file shall remain intact.
+
+import os
+from flumotion.common.log import safeprintf
+
+
+def get():
+    bindir = '@BINDIR@'
+    datadir = '@DATADIR@'
+    localstatedir = '@LOCALSTATEDIR@'
+    libdir = '@LIBDIR@'
+    sbindir = '@SBINDIR@'
+    sysconfdir = '@SYSCONFDIR@'
+
+    if 'FLU_CACHE_DIR' in os.environ:
+        cachedir = os.path.realpath(os.environ['FLU_CACHE_DIR'])
+        daemondir = cachedir
+    elif 'HOME' in os.environ:
+        homedir = os.environ['HOME']
+        cachedir = os.path.join(homedir, '.flumotion')
+        daemondir = homedir
+    else:
+        cachedir = os.path.join(
+            localstatedir, 'cache', 'flumotion',
+            '.flumotion')
+        daemondir = os.path.join(
+            localstatedir, 'cache', 'flumotion')
+
+    return {
+        'isinstalled': True,
+        'bindir': bindir,
+        'cachedir': cachedir,
+        'configdir': os.path.join(sysconfdir, 'flumotion'),
+        'daemondir': daemondir,
+        'datadir': os.path.join(datadir, 'flumotion'),
+        'gladedir': os.path.join(datadir, 'flumotion', 'glade'),
+        'imagedir': os.path.join(datadir, 'flumotion', 'image'),
+        'localedatadir': os.path.join(datadir),
+        'logdir': os.path.join(localstatedir, 'log', 'flumotion'),
+        'pythondir': os.path.join(libdir, 'flumotion', 'python'),
+        'registrydir': cachedir,
+        'rundir': os.path.join(localstatedir, 'run', 'flumotion'),
+        'sbindir': sbindir,
+        'version': '@VERSION@',
+    }

@@ -1,0 +1,53 @@
+<registry>
+
+  <components>
+    <component type="pipeline-producer"
+               base="flumotion/component/producers/pipeline"
+               _description="A generic GStreamer pipeline converter.">
+      <source location="flumotion.component.producers.pipeline.pipeline" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="pipeline.py"
+               function="Producer" />
+      </entries>
+
+      <synchronization required="yes" />
+
+      <properties>
+        <property name="pipeline" type="string" required="yes"
+                  _description="The partial GStreamer pipeline to use." />
+      </properties>
+    </component>
+  </components>
+
+
+  <bundles>
+
+    <bundle name="pipeline-producer-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/pipeline">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="pipeline-producer-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="pipeline-producer-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/pipeline">
+                <filename location="pipeline.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

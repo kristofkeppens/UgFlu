@@ -1,0 +1,796 @@
+This is Flumotion 0.5.4 "EAT"
+        
+Features since 0.5.3:
+    
+  * You can now configure your ondemand flows to force displaying
+    a file download dialog when the user browses to the media URL,
+    instead of relying on the web browser handling of the file.
+
+  * The assistant displays more precise and user-friendly
+    messages and is more thorough in checking for the correct
+    working environment for your flow. It's also capable of
+    presenting a list of connected FireWire cameras allowing
+    you to choose any of them.
+
+Bugs fixed since 0.5.3:
+    
+  * 604 : [gtk admin] UI bug showing volume widget in completely the wrong place
+  * 710 : in the wizard, selecting alsa sound card for a device you don'th ave permissions for gives a GStreamer error, not permission denied.
+  * 829 : Unify keyframe spacing encoding property
+  * 891 : smoke wizard glade has settings but wizard step doesn't use them
+  * 898 : wizard should tell you when it is checking worker capability
+  * 910 : wizard produces firewire flow with wrong (rounded?) fps
+  * 947 : Add a apache logger option to the httpstreamer/httpserver wizard page
+  * 949 : at the wizard, firewire audio can be configured when firewire video is not selected
+  * 970 : Clean up framerate/fraction mess in the wizard
+  * 995 : Check for porter mount point collissions
+  * 1026 : problems with component tooltips in component list
+  * 1036 : worker name in component view should be handled differently
+  * 1063 : fix firewire messages for new firewire stack
+  * 1073 : If a lost component exists, the wizard fails to erase the previous stream
+  * 1100 : Tell the user that if he's in doubt, chose the default options
+  * 1104 : flumotion-admin wizard: "Demand" page should use a button
+  * 1125 : flumotion-admin: Consumption: Forward is disbled for Save To Disk
+  * 1126 : flumotion-admin: Back/Forward adds duplicates to left-hand list
+  * 1128 : flumotion-admin: disker: "Record on startup" checkbox is ignored
+  * 1135 : flumotion-admin: Firewire Video: Bad defaults
+  * 1138 : flumotion-admin handles authentication problems badly
+  * 1142 : models.py:742 ComponentValidationError: encoder component encoder-audio must have at least one feeder
+  * 1145 : flumotion-admin: Exports a hostname of "None" in http-server properties
+  * 1152 : Rename norwegian bokmål translation
+  * 1170 : bug filer widget files bugs with the component wrong
+  * 1176 : not clear how muxers should name their eaters
+  * 1178 : No such method: remote_scheduleRecordings when selecting a iCal file using disker with the GUI
+  * 1179 : Block or delete the "Start new manager and connect to it" option from the Flumotion Admin' Greeter on windows
+  * 1183 : Firewire wizard page should let the user choose between all the available cameras
+  * 1187 : On Demand's file selector browses the local directories instead of the worker's ones
+  * 1207 : Sound card wizard page does not block the froward button while probing the device nor when probe failed
+  * 1208 : soundcard audio-producer's 'Volume' tab crashes
+  * 1209 : The 'Statistics' tab of http-streamer component offers a wrong url to the user
+  * 1210 : The text of the checkbox from the adminwindow's Volume tab is not fully clear
+  * 1230 : RRD plug does not log Long values
+  * 1231 : Multiple porters should be created when the streamers are on different workers
+  * 1232 : The HTTP Streaming wizard step should be deleted or replaced
+  * 1236 : Admin window updates the componentview even when the selected component is the same as before
+  * 1244 : http cached provider sends truncated files
+  * 1245 : mimetypes.py:126 TypeError: gnomevfs.mime_get_default_application() argument 1 must be string, not None
+  * 1253 : New encoders added to an existing flow with a firewire-producer cannot feed from the producer
+  * 1255 : fileprovider-localcached has a race condition when calculating cache usage
+  * 1256 : ratecontroller-fixed has a race condition when the producer gets deregistered while there's pending data to send to the client.
+  * 1257 : http-ondemand has a race condition when the consumer goes away while we're waiting for data to be read asynchronously
+  * 1268 : eventcalendar supports EXDATE (and should know that)
+  * 1269 : eventcalendar interprets the RECURRENCE-ID incorrectly
+  * 1274 : Firewire check doesn't specify the video pad and it fails occasionally when obtaining the negotiated caps
+
+Features since 0.5.2:
+
+  * The assistant now provides help with setting up on-demand
+    services. It can also assist users in adding more encoding formats
+    to existing flows.
+
+  * A new consumer component (gdp-consumer) has been added, the HTTP
+    consumer components can write statistics directly to RRD files and
+    the http-server component is now able to maintain a cache of
+    streamed files.
+
+  * Some lower-level tools were improved, and some were added,
+    including validators for flow, config and registry files and
+    command-line utilities for controlling the different processes of
+    Flumotion.
+
+Bugs fixed since 0.5.2:
+
+  * 171 : Adjust text size
+  * 695 : [gtk admin] shows components from old manager when connecting to a new one
+  * 725 : flumotion-command doesn't explain ARGS for invoke
+  * 731 : Should be possible to change a component's debug level on the fly
+  * 758 : [gtk admin]  not properly handling manager switching
+  * 795 : Add a way to tell the admin to stop all sad elements in one shot
+  * 802 : cryptic error from osssrc in trunk
+  * 821 : Strange behaviour flumotion disker component feeded by ical file
+  * 826 : Add help button to wizard pages linking to the right documentation
+  * 828 : Unify bitrate encoding property
+  * 847 : Flumotion generates pid file with 666 permissions
+  * 850 : Use gtk.StatusIcon instead of eggtrayicon
+  * 864 : switch component does not successfully switch streams
+  * 888 : When an encoder misses an element, block next
+  * 889 : The first page of the configuration wizard needs a better description
+  * 890 : flumotion-admin (gtk) doesn't seem to clean-up
+  * 895 : Bouncer keep-alive related traceback
+  * 902 : steps should be named untranslated but marked for translation, instead of the other way around
+  * 912 : Get rid of SXML
+  * 913 : Wizards muxing saving can be simplified
+  * 926 : Theora should be the default option in the wizards Encoding step
+  * 927 : Two wizards running at the same time when disconnected
+  * 928 : Override guessed public hostname
+  * 932 : Add demand streaming to the wizard
+  * 933 : Support for serving multiple formats
+  * 938 : common.formatTime should be moved, made translatable properly
+  * 939 : order components in xml export logically, and add some whitespace, and break at 80 chars
+  * 941 : Fallback for crypt module
+  * 942 : Clean up os.path.sep mess
+  * 946 : inconsistent naming of plugs
+  * 950 : rename of component files
+  * 953 : missing glade files for wizard steps handled improperly
+  * 958 : keyboard accelerators do not work on greeter
+  * 959 : ondemand component wizard changes
+  * 963 : Split the generic HTTP options into a separate wizard page
+  * 967 : flumotion-admin: Crash when going to web cam producer page
+  * 968 : Crash when clicking Forward on Encoding page
+  * 971 : getPidRunning raises an exception if the pid runs as a different user
+  * 975 : flumotion.ui.url was removed and it is being used at flumotion-flowtester project
+  * 976 : update catalan translations
+  * 977 : setting 'Enable Debugging' in Debug menu causes all components to have debug level of 0 from the start
+  * 978 : review flumotion-template
+  * 979 : add a synchronized marker to all the logs everywhere
+  * 987 : Show the component type in the UI
+  * 992 : Production step is not saving the selected values
+  * 993 : PID columns are not set when adding a new format
+  * 998 : Invoking the wizard should clean the current state
+  * 999 : Create a new scenario wizard page
+  * 1012 : 2 wizards with the same name: "Flumotion Configuration Wizard"
+  * 1013 : send synchronized markers even when the components are not happy
+  * 1014 : Use GTK stock icons for pause/stop/play
+  * 1015 : using translatable names for stepnames? Brokes the wizard on spanish and catalan at least
+  * 1018 : flumotion-admin wizard: "framerate" should be "Frame Rate"
+  * 1020 : first run wizard should generate its own certificate
+  * 1031 : decide on naming for uistate keys
+  * 1032 : the wizard's Finish button stopped having a keyboard accelerator
+  * 1033 : when stopping/starting a component, selection gets reset
+  * 1034 : context menu stop/start on components does not work
+  * 1046 : Open Recent Connection should be grayed out if there aren't any
+  * 1048 : Need to click Forward many times to change page
+  * 1050 : Add a remote file system display widget
+  * 1051 : Clicking on Clear in Open Recent Connection dialog should disable connect button
+  * 1054 : Disker should use FileSelectorDialog
+  * 1057 : change logo for overlay
+  * 1059 : icecast consumption should only be shown for formats it supports
+  * 1061 : when webcam is not found, the error message should override the "probing" info message
+  * 1062 : overlay component should have relative positioning/size for overlay
+  * 1064 : Support for killing a component
+  * 1065 : Right clicks on a multi-selection cancel the selection befor showing the context menu
+  * 1069 : all components should have descriptions and property descriptions
+  * 1070 : Double clicking in components open new notebooks
+  * 1074 : ctrl-q and ctrl-w shortcuts should both work to exit the admin
+  * 1075 : adminwindow.py:1417 AttributeError: 'NoneType' object has no attribute 'getWorkerHeavenState'
+  * 1076 : add Help>Contents using yelp and the documentation module
+  * 1077 : message.py:238 TypeError: object of type `GtkTextTag' does not have property `1foreground'
+  * 1079 : File Selector needs to start work again
+  * 1084 : validate-config.py should error on deprecated config
+  * 1088 : Remote date/time from error messages in the wizard
+  * 1090 : Change description for audio/video test sources
+  * 1091 : Remove YUV/RGB combo from video test src page in the wizard
+  * 1094 : Add a tooltip for show logo on the overlay wizard page
+  * 1095 : Selected option is lost for format selection
+  * 1102 : The mount point entry on the streamer page should be wider
+  * 1107 : models.py:748 ComponentValidationError: component porter-http must have a worker set
+  * 1111 : Streamers should write RRD files directly
+  * 1115 : Select a reasonable default component after closing the wizard
+  * 1116 : Cached bundled file not found when starting a component
+  * 1122 : first page of the assistant is now way too scary with all that text
+  * 1123 : scenarios page should have consistent scenario descriptions
+  * 1124 : flumotion-admin: Crash when entering negative Vorbis quality: unknown signal name: validation-changed
+  * 1139 : plug descriptions and plug property descriptions are not parsed or enforced
+  * 1143 : ical disker doesn't start next recording if events are contiguous
+  * 1146 : test_comptest doesn't work
+  * 1153 : Base Bouncer class should have a do_cleanup called with the keycard that are removed
+  * 1154 : Expiring keycard failed when using http-server components
+  * 1155 : Expiring bouncers keycard cause a callback bound to raise a KeyError
+  * 1162 : Keycard/Bouncer patches
+  * 1164 : Make the scenarios in the wizard pluggable.
+  * 1171 : ical-bouncer should handle exceptions better
+  * 1172 : Rate control could make components memory consumption grow wild
+  * 1173 : icalbouncer has a typo and lacks a testcase
+  * 1174 : disker component should not import eventcalendar when client has no icalendar support
+  * 1185 : Theora encoding wizard step skips the bitrate and always takes the quality parameter
+
+Features since 0.5.1:
+
+  * The wizard has been re-written completely.  Forward, back, and
+    random access navigation through the wizard pages should now work
+    better. There is now an option to automatically serve Cortado in a
+    web page. A shoutcast consumer has been added. The wizard queries
+    the manager for capabilities, allowing add-on projects to plug in
+    different components and wizard pages into the wizard for
+    producers, encoders and consumers.
+
+  * The GTK+ admin now offers a new tab in the component view
+    providing information about the component's process (uptime, CPU
+    usage, virtual memory size, etc.); tooltips have been added to a
+    number of UI elements and also the status bar provides more
+    information.
+
+  * A debug option has been created that hides the scary debug parts
+    for the average user, but at the same time allows more debugging
+    power for the less easily scared users.  It now allows setting log
+    levels for GStreamer and Flumotion on the fly per component.
+
+  * New Dirac encoding component (also supported directly in the
+    wizard)!
+
+  * The HTTP server component can limit the bitrate at which it serves
+    files and can also be easily set-up to serve Cortado applets with
+    the supporting HTML and JavaScript files.
+
+  * The FireWire producer allows selecting devices by GUID - now it's
+    possible to specify one of the connected devices, or even use
+    multiple devices if they are connected to different buses.
+
+Bugs fixed since 0.5.1:
+
+  * 194 : no wizard page for mulaw
+  * 312 : doesn't sort PID and CPU columns correctly
+  * 379 : http streamer needs to check for twisted-web
+  * 593 : [gtk admin] exposes arcane info to user
+  * 692 : When a component is deleted from outside, the admin do not remove the component configuration panel.
+  * 704 : admin should have a summary page per-component
+  * 743 : failing to record from soundcard should give a nice flumotion error, not a gst error
+  * 759 : Flumotion admin component list is cleared when a worker reconnect
+  * 790 : [gtk admin]  shows too many error dialogs
+  * 793 : Sad components sometimes need stopping twice
+  * 797 : "component crashed" info stays in the UI after component restart
+  * 801 : XML export of configuration isn't formatted nicely
+  * 806 : first stab at a component tab
+  * 810 : open recent connections dialog should have a sortable header
+  * 813 : New switch component doesn't check for new switch element
+  * 815 : Current client bitrate missing at httpstreamer UI
+  * 817 : open existing connection is broken in gtk admin
+  * 818 : Admin exception when failing to reconnect
+  * 820 : mood icons should have a tooltip in the ui
+  * 822 : Encoders and muxers should be pluggable in the wizard
+  * 823 : HTTP consumer page of the wizard needs to be pluggable
+  * 824 : Add cortado support
+  * 827 : [gtk admin] Redo the statusbar
+  * 835 : recent connections broken again
+  * 836 : __version__ breaks doc strings
+  * 837 : fails to build with epydoc 3.0 series
+  * 838 : Would like to disable doc build
+  * 840 : Pluggable components should be sorted different in wizard
+  * 843 : Improve error reporting in the wizard
+  * 844 : Add support for <wizard> tags for plugs.
+  * 845 : bouncer component GUI broken
+  * 854 : audio test producer wizard page doesn't let you click forward
+  * 856 : Add a function in bouncers to get its enabled status
+  * 858 : Add interfaces for the wizard plugins
+  * 859 : flumotion-command doesn't return after invoke if the component name is incorrect
+  * 860 : Rate control interface isn't sufficient
+  * 862 : component initialization API/protocol broken
+  * 863 : warnings in flumotion.test.test_greeter
+  * 865 : race condition when creating bundle cache directories
+  * 867 : wizard not working with firewire sources
+  * 870 : Soundcard producer has bad defaults
+  * 873 : when daemonising the worker, it cannot find the flumotion-job binary if worker was run with a relative path in argv[0]
+  * 874 : add integration with documentation system
+  * 875 : flumotion/configure/installed.py.in creating the cachedir causes a bug
+  * 876 : httpstreamer should check for twisted.web
+  * 880 : Recent connections dialog should have typeahead search
+  * 882 : Labels should be left aligned, not right aligned.
+  * 883 : Add spacing between worker label and worker combo
+  * 884 : Audio & Video is not working properly in the wizard
+  * 885 : Keyframe frequency should be changed to "time between keyframes"
+  * 886 : Burst on connect should be explained
+  * 887 : Fix the Java check on the cortado page
+  * 892 : wizard produces wrong flow for firewire video and souncard audio
+  * 893 : Debug options are dangerous
+  * 897 : New documentation message stuff causes exceptions.
+  * 899 : SleepingComponentError when selecting a sad component
+  * 900 : Bouncer UI resort listener more than one time
+  * 901 : Inconsistent naming of Producer/Production steps compared to Conversion/Consumption
+  * 904 : Streaming with a cortado applet doesn't work, it gives 404 on the http streamer
+  * 906 : wizard  complains about overlay without producer npvalid
+  * 907 : wizard shouldn't have worker combobox on the initial 'Production' page
+  * 908 : flumotion-command should support authentication and return an error code on failure
+  * 909 : wizard not working properly with firewire sources on different workers
+  * 911 : http-server components should be atmosphere components
+  * 914 : when overlay wizard page has a problem, it offers to go forward without it, but the resulting config still has an overlay component
+  * 915 : audiotest-producer does not check for the level element
+  * 917 : Add hour glass when waiting for wizard
+  * 919 : better logging in http-server
+  * 920 : file-server component not properly handling session end when connection is lost early
+  * 921 : dirac encoder
+  * 923 : Cortado should not be served on localhost
+  * 924 : setting component to sad in do_check doesn't prevent the component from continuing with init process
+  * 929 : Text is missing in overlay step for the default wizard configuration
+  * 931 : 'Clear All' fails to clear all components if more than one component in the atmosphere
+  * 934 : BTTV should prevent wizard from progressing when lacking channels
+  * 936 : disabling overlay breaks wizard
+
+Features since 0.4.2:
+
+  * Much more robust and efficient protocol between manager and
+    component. It is now impossible to get a component in a "stuck"
+    state. The manager's code was dramatically simplified,
+    decreasing manager CPU usage when many components decide to
+    reconnect at once.
+
+  * A feed may be provided by more than one component. If one
+    component providing a feed goes away, and another component is
+    available for that feed, the manager will reconnect downstream
+    components, providing redundancy and failover.
+
+  * New components! Use Flumotion as a source to Icecast streamers
+    with the shout2-consumer component, thanks to Gergely Nagy. Make
+    picture-in-picture streams with composite-combiner. Dynamically
+    switch between different feeds with the various switch
+    components. The switch may occur manually, or automatically
+    based on data flow or on a schedule expressed in an ical file.
+    Use GNonLin to stream a dynamically-reschedulable sequence of
+    files with playlist-producer. Broadcast your screen with
+    screencast-producer, data from an IP camera with rtsp-producer,
+    or live MPEG captures with ivtv-producer. Finally you can limit
+    access to a manager or to a stream by IP with the ip-bouncer.
+    Good times! See the output of flumotion-inspect for more
+    information.
+
+  * Improved components! You can now capture the raw DV from a
+    firewire-producer. The webcam component supports V4L2, and HTTP
+    streamers finally implement bandwidth limiting. You can now
+    tweak the theora encoding parameters (there's even an interface
+    for it in the wizard), and the on-demand HTTP streamer better
+    supports Flash video seeking. Finally, we now have per-channel
+    volume meters for audio sources in the GTK+ admin.
+
+  * Faster component startup. Components no longer parse the
+    registry, which greatly improves component startup time. In
+    addition, the manager-component protocol revisions reduce the
+    number of remote calls needed for a component to go happy.
+
+  * A comprehensive reduction of Flumotion's memory footprint. In a
+    still-ongoing effort, we have reduced memory usage by 20 percent
+    or more in all processes. In addition, via revising how we
+    handle authentication credentials, we have plugged all known
+    memory leaks.
+
+  * The amount of steady-state network chitchat between components
+    and admins was reduced. Admins will only receive CPU usage
+    updates from components if they subscribe to updates.
+
+  * Detailed statistics and diagnostics of the state of data flow
+    in a component can now be viewed from the GTK+ administration
+    interface.
+
+  * Better informational messages for debugging misconfigured
+    components. These messages show up in the GTK+ admin. Also, the
+    manager's "export configuration" feature works much more
+    reliably now.
+
+  * HAL integration for allowing Flumotion access to media devices.
+    No more chmod a+rw /dev/raw1394!
+
+  * Better debugging and programmatic interfaces to the Flumotion
+    system, with the addition of manhole support (SSH into your
+    manager!), improvements to flumotion-command, Nagios
+    integration, a tool for logging UIState keys to an RRD file, and
+    more. Admit it, the part about "and more" piqued your curiosity.
+
+Bugs fixed since 0.4.2:
+
+  * 22 : [wizard] Smoke settings screen should probably have better name
+  * 44 : Don't print in manager when logging in with bad credentials
+  * 68 : Wizard click on left summary does not update back/forward buttons
+  * 74 : [patch] Theora settings window should have keyframe option
+  * 102 : ability to specify default registry location
+  * 106 : Being able to serve a looping file when stream not connected
+  * 107 : Kill dead code in admin heaven
+  * 111 : Firewire audio broken
+  * 116 : Fixing device access in a nice way
+  * 167 : worker without user/pass can't connect to manager
+  * 187 : a worker being shut down triggers a notifyOnDisconnect on remote reference + wrong warning
+  * 200 : Need to rethink an important flaw in our xml config file format
+  * 208 : flumotion service script should allow system-style running completely from homedir
+  * 214 : Maximum clients is incorrect or under-explained.
+  * 224 : make flumotion-manager/-worker installable without X
+  * 239 : shout2 (icecast2) consumer
+  * 244 : --help prints gst's help, while -h gives flumotion's help
+  * 260 : [gtk admin] 'reload code' on admin components fails
+  * 299 : UI does not allow you to make a new connection
+  * 371 : flumotion startup message with no SSL
+  * 373 : cache has race conditions
+  * 379 : http streamer needs to check for twisted-web
+  * 385 : defer_generator_method screws with the docs
+  * 393 : Firewire worker traceback
+  * 418 : porter shutdown throws exceptions
+  * 445 : admin should allow deleting only one component
+  * 459 : segfault in admin when switching between component UI's
+  * 465 : Components need a .medium set to be able to ask for reconnection
+  * 512 : Exceptions raised inside StateCache update methods don't print tracebacks
+  * 520 : tracebacks in admin when disconnected from manager
+  * 521 : another admin traceback
+  * 538 : Wizard should limit video size to known max size
+  * 540 : some UI suggestions on Plumbing
+  * 547 : Firewire-Cam:Video and Producer-Soundcard won't work together
+  * 558 : flumotion service script hangs if manager can't write the pid file
+  * 567 : http-server doesn't work with mount-point set to /
+  * 569 : testsuite uses deprecated methods
+  * 575 : component GTK UI can not hide widgets during haveWidgetTree
+  * 578 : loading a config with bad properties doesn't give a good error
+  * 591 : feeder tab shows disconnected when actually connected
+  * 594 : Make common.log less specific to Flumotion
+  * 595 : remove raise common.errors.SystemError from common.log.errorObject
+  * 598 : GStreamer errors in feedcomponents should be handled more nicely
+  * 604 : [gtk admin] UI bug showing volume widget in completely the wrong place
+  * 605 : cleanup of properties in component protocol
+  * 612 : fpbclientfactory debug should tell us what ip it failed to connect to
+  * 613 : instances of print in flumotion can cause 100% CPU
+  * 614 : no useful feedback if you daemonize a manager with an invalid config
+  * 616 : flumotion-launch when reconnecting eaters causes exceptions
+  * 618 : support FLV start= GET parameters in httpfile
+  * 619 : refactor feedcomponent.py to use the feed medium's requestFeed
+  * 621 : refactor adminmodel to offer a deferred connection interface
+  * 622 : log.removeLogHandler
+  * 626 : component UI state keys need to be graphable
+  * 631 : add file monitoring to ical handling code such that component updates it's schedule from changes to file
+  * 632 : Firewire producer should allow saving of the raw stream
+  * 639 : bug in parsing eater nodes when feed nodes not specified
+  * 641 : manager's registry code should be more robust wrt. to registry changes
+  * 642 : extern.log color output
+  * 644 : v4l2 support should be added to the current webcam and tvcard producer
+  * 645 : flumotion admin UI does not report parsing errors in the XML configuration file
+  * 646 : Base Component Classes are insufficient
+  * 649 : wizard outputs new config format with some defects
+  * 656 : traceback during stopping of http-server prevents component from being stopped
+  * 661 : fxml calls str() on unicode objects incorrectly
+  * 664 : The flumotion multiadmin do not call the model_addPlanet on reconnection
+  * 665 : registry will not notice new .xml files at runtime in directories that had no .xml files at startup
+  * 667 : Worker shouldn't import gst, and checks should be out-of-process
+  * 675 : choose appropriate reactor for manager, worker, tests
+  * 682 : The component properties parser should handle native types uniformly.
+  * 688 : manager never removes keycard from manager bouncer
+  * 694 : components need to name their eaters according to their eater names, not according to the names of their initial feeders
+  * 698 : The Manager do not catch ComponentSetupHandledError
+  * 700 : warning about upgrading component config is useless
+  * 705 : refactor bouncers so as not to leak keycards
+  * 709 : flumotion/manager/depgrah.py:mapFeedersToEaters is wider than 80 chars and has too many indentation levels to avoid being dodgy
+  * 715 : soundcard continuously tracebacks
+  * 716 : any kind of pb.Error subclass turns up as an InsecureJelly
+  * 735 : Bouncers need some redesign
+  * 737 : segfault stopping streamer component
+  * 740 : disker cannot create unicode filenames
+  * 744 : reservePorts doesn't work when feederport is set to random
+  * 745 : Why does manager.ComponentAvatar have a method to allow jobs to request ports on any worker?
+  * 748 : [logging] optional arguments in outputToFiles()
+  * 774 : Problem with authenticacition in 'videotest with http and disker' test
+  * 775 : Problem with authenticacition in 'videotest-bouncer' test
+  * 781 : Stopping a streamer can't complete logging properly
+  * 787 : Stopping a lost component behaves poorly
+  * 788 : in some circumstances, component mood is hungry, but flow is fine
+  * 803 : wizard error when configuring soundcard
+
+Bugs fixed since 0.4.1:
+
+500     fix flumotion's configure.ac to use runtime tests, not pkg-config
+568     when master clock provider goes sad, starting it again compains about not able to reserve ports
+571     theora encoder reporting bogus info about bitrate even though manager config has it in correct units
+573     Rewrite daemonisation and shutdown code some more
+577     FeedComponent, HTTP streamer are not threadsafe
+583     clean up the worker's error handling
+588     The manager don't close the connection of a worker if its name is already used
+590     add timestamps to messages
+592     GStreamer errors can cause the manager to have inconsistent state
+596     default admin pages not working
+603     Admin failed to load UI bundle after update to feisty (Python 2.5?)
+
+Features since 0.4.1:
+
+ - Full support for running under Python 2.5
+ - The GTK admin can now start a manager and worker for you automatically
+ - Messages now have timestamps to allow better diagnosis of failures
+ - Improvements for service scripts to allow better recovery from failure states
+ - With sufficiently recent GStreamer, components now provide much more information about errors in the data stream
+ - Error resilience is drastically improved compared to older versions
+
+Bugs fixed since 0.4.0:
+
+546     Worker-Manual is Wrong!
+535     The admin don't receive component's messages
+548     Component don't trap ComponentSetupHandledError after do_setup
+563     [disker] need ability to specify filename in strftime syntax in config
+
+Features since 0.4.0:
+ - Improved log rotation support
+ - Improved reconnection reliability
+
+Bugs fixed since 0.3.2:
+
+523	when disk is full, disker goes sad, but without any message in the admin ui
+551	manager restart makes component marked as lost by mistake
+552	components logging back in from lost proxy jobstate keys in incorrect order
+
+Features since 0.3.1:
+ - Greatly improved and more flexible http burst-on-connect
+ - Allow setting a maximum duration for http connections
+ - Add simple icecast-stream relaying component
+ - Add component that takes GDP-payloaded data from a unix socket
+ - iCal based bouncer, to specify that clients may only connect during a
+   specific time of day
+ - Restarting a manager while a flow is running now works reliably
+ - The disker component can now be remotely controlled to start/stop recording,
+   and to automatically maintain symlinks to the latest recording
+ - Many component properties were renamed to make them more consistent
+ - The http-server component is now more reliable, and has GTK UI
+ - Components in the GTK UI now show information about their feeders
+ - Network clock synchronisation now works in more cases
+ - Workers and their jobs can now have their logs rotated
+
+Bugs fixed since 0.3.1:
+
+50      when modules get renamed, and you do a new make install, you end up
+        with two components of the same name
+88      automatically restart workers on connection trouble
+89      possibility for external (software) sources.
+131     a manager restart with a running worker config causes worker to lose
+        its old children that get overwritten with new info
+232     go over all component properties in registry and unify naming
+298     Changing to a different connection and failing leaves the UI in a
+        grayed-out state
+315     stopping all and starting all makes all components sad
+352     theora encoder uses bitrate in kbit/sec, unlike most other encoders
+411     result of <debug></port>
+412     Restarting a manager doesn't work properly
+414     flumotion-admin's name lookup doesn't always work correctly
+438     core dump by flumotion-job
+440     flow with an audio-source fails
+441     looper component stays waking forever if file does not exist
+449     workers that have their port range specified as x-x (to use only one
+        port) make things go wrong
+454     reconnect when upstream components restart causes a bad stream, gdp
+        issue
+462     Burst-on-connect by time
+471     empty .connections file breaks the greeter, creating a gtk.Label
+        instead of the custom Connections
+477     we seem to be leaking file descriptors on reconnect
+479     leak in feedserver
+480     after component that is clock master reconnects, it is told to be a
+        clock master again
+481     merge mike-http-improvements-1
+484     worker does not create job for a sleeping component that has a
+        moodPending, also moodPending should get reset when stopping a sad or
+        lost component
+485     add ability to stop recording to a disker
+486     disker should allow schedulable recordings
+502     make sure log rotation works both in the manager and in workers
+507     feed components should track information of the eaters connected to them
+510     every reconnect causes a new feeder to be added in UI for "plumbing"
+513     The BaseAdminGtkNode don't have setitem and delitem vmethod
+515     The Plumbing GtkNode is alway instantiated and failed when the
+        component is not a FeedComponent
+518     Admin prints tracebacks for non-feed-components
+519     tracebacks in  admin when  stopping a component
+524     disker admin UI bug
+525     When the audiotest component admin interface is loaded it set the
+        frequency to 1 making it "silent"
+530     admin's open connection, quit, and about menu items appear as gtk-open,
+        etc
+531     flumotion-admin screws the pooch if it can't connect to the manager
+
+Features since 0.2.2:
+
+- dropped support for GStreamer 0.10
+- dropped support for Twisted 1.3.0
+- workers only expose one TCP port for feeds now
+- porter component allows sharing one TCP port for all streamers
+- added plugs and sockets for finer-grained extensibility
+- added a static file serving component
+- workers and jobs reconnect on network failures
+- components reconnect feeds on network failures
+- added integration test framework
+
+Bugs fixed since 0.2.2:
+
+- 327 : Clock slaves can start up before the clock provider
+- 332 : Patch for valgrinding jobs
+- 359 : Components that fail to start can't be restarted later
+
+Features since 0.1.10:
+
+- Fully works with GStreamer 0.10
+- a looper element that can create a live stream out of an Ogg/Theora+Vorbis
+  file (GStreamer 0.10 only)
+- Component protocol cleanups, making it a lot easier to write new components.
+  Also fixes a set of bugs where a component ran into an error and can't be
+  restarted.
+- synchronization between capturing components (if they can directly contact
+  each other over UDP).  Should properly synchronize webcams and soundcards.
+- Flumotion now supports add-on projects, that can be discovered even when
+  uninstalled, using the FLU_PROJECT_PATH environment variable.
+- Added flumotion-command, a simple admin client that can execute certain
+  commands on components.  Useful for getting statistics, rotating log files,
+  ...
+- Show what worker a component is supposed to start on.
+- Components can now send fully translatable messages as part of their state.
+  The translations happens in the admin client, in the admin's locale.
+  These messages are now visible in the admin and tell you more about why
+  a component is sad.
+
+Issues fixed since 0.1.10:
+
+81      Error reporting from workers
+138     Worker control problems
+142     JPEG applet's internal buffering produces "lag"
+166     components do not check syntax for their config well
+246     planet.xml should contain path to pem file
+271     Components should log into manager before importing component code
+278     gnomevfssrc blows up when ~/.gnome2 is not writable
+286     component properties mixed up with descriptions of the flow
+295     when a worker runs out of ports it doesn't give a nice error
+300     videotestsrc key frames are not sent by the streamer at client startup
+305     HTTP admin UI doesn't show bitrate when no client has connected
+307     [webcam] 'Could not negotiate format' error in gstbasesrc
+308     if worker is specified in XML, admin should show it even when not
+        logged in (maybe in gray)
+310     when you have a misconfiguration (wrong propety name), the manager
+        starts up, then exits
+314     [wizard] Forward button gets unresponsive on 'leaf' pages
+316     [PATCH] regression in vorbis encoder for 0.10 gstreamer
+320     Help->about is wrong
+321     text admin now spewed with stderr messages (a recent commit)
+322     component gtk ui shows old out of date irrelevant errors :)
+324     flumotion-command manager parsing looks to not parse the port number
+        to an int
+328     [PATCH] make volume effect work in 0.10!
+
+Features since 0.1.9:
+
+- (Experimental) support for GStreamer 0.9.x Development series
+- flumotion-inspect to examine installed components
+- flumotion-launch to launch a command-line specified flow in one process
+- projects allow uninstalled additional Flumotion projects to be used
+- workers now spawn job processes
+- Flumotion can now be translated; Dutch translation added
+
+Issues fixed since 0.1.9:
+
+ticket  summary
+261     interactive password prompting doesn't work
+129     remove registry dependency in job.py so worker doesnt need registry
+173     admin hangs if manager is not running
+258     flumotion-manager --version fails
+
+Features since 0.1.8:
+
+- Now works correctly with Twisted 2.0
+- Issues related to installing in custom prefixes have been fixed
+- components show their relative CPU usage
+- burst-on-connect for video is implemented, giving clients all data
+  since the last key frame immediately
+- a new message area was added to the wizard so worker messages can be
+  made non-modal
+- man pages were added
+
+Issues fixed since 0.1.8:
+
+ticket	summary
+240	Triggering an assertion on the Consumption wizard page
+264	Disker GUI gone
+236	"Export Configuration" silently overwrites existing files
+241	Clearing the mount property of http-streamer borks the wizard
+47	Remote PB lists
+135	Audio src selection should have device name/info like videosrc
+248	worker not killed with flumotion stop
+255	Twisted reactor tracebacks only appear at debug level 4
+
+Features since 0.1.7:
+
+- Firewire widescreen capture now works
+- A trayicon got added, giving you an immediate view of the status of your
+  admin client
+
+Issues fixed since 0.1.7:
+
+ticket	summary
+201	[PATCH] support advanced theora encoding properties
+202	No error message when wrong permission on .pem file
+206	[disker] [patch] support more extensions
+210	test audio component does not respect sample rate setting
+212	Ogg Vorbis quality setting incorrectly recorded in planet file
+216	wrong bundle setup at times causes tracebacks when showing UI
+231	[patch] tray icon
+
+Features since 0.1.6:
+
+- running configuration can be exported to XML from the admin client
+- XML can be imported to the manager from the admin client
+- admin client manages and remembers previous connections
+- works with Twisted 2.0 as well
+- TV Cards are properly supported now
+- keycards contain a domain that can be used in bouncers
+- Firewire sound volume can be changed
+
+Issues fixed since 0.1.6:
+
+ticket	summary
+
+18	Use of Norwegian characters in overlay test breaks wizard
+110	Webcam component does not support different devices
+186	in some cases a streamer asking a bouncer to expire tracebacks
+78	[vorbis] should autosample rate,channels for bitrate
+170	flumotion 0.1.5 does not detect python 2.3 on debian unstable
+183	[vorbis] Scale based on bitrate...patch included
+184	add volume control/setting to volume effect and add volume effect
+        to firewire component
+185	bouncers don't work in 0.1.6
+188	overlay component does not clean up temporary overlay .png
+190	admin client does not see locally cached bundles anymore
+192	an admin_gtk that imports another admin_gtk where code gets
+        changed does not get rebuilt properly
+198	firewire input do not start for video
+199	Overlay text not removed even if box for it not checked
+
+Issues fixed since 0.1.5:
+
+ticket	summary
+104	GUI for worker
+165	flumotion needs to give error when missing firewire device
+172	login problems in admin client
+175	Speex do not work with current CVS
+176	Colorbalance GUI never comes up with Current CVS
+
+Issues fixed since 0.1.4:
+
+ticket	summary
+31	RGB test source does not work
+69	Logitech Webcam(quickcam) causes flumotion-worker to hang during
+	configuration
+144	make clean breaks uninstalled launch
+59	mention authorization (.pem/planet.xml) in README
+163	flumotion hangs sometimes on overlay
+
+Issues fixed since 0.1.3:
+
+36	need to have multiple admin logins working
+123	changes to gstreactor.py in changeset 1206 breaks flumotion
+13	make common Heaven baseclass
+91	flumotion-admin should handle flumotion-manager restart
+112	being able to tune brightness and contrast on v4l devices
+118	overlaying does not work on mandrake
+120	[PATCH] add admin_gtk.py to Makefile.am in videotest
+121	[PATCH] flumotion ui mdoule not installed with make install
+122	[PATCH] make disker have a ui component with a button to change file manually
+132	Workers can be started again and again
+133	[PATCH] addition of volume effect (and its implementation in soundcard producer) with cool new vumeter
+136	flumomtion wizard do not warn about missing libdv plugin
+139	Unable to start Flumotion on Fedora 3
+
+Issues fixed since 0.1.2:
+
+ticket  summary
+71      Final button in wizard should be "Done" instead of "Quit"
+92      Worker hangs/crash on sound device selection
+98      Getting assertion error when selecting bttv card on thread as its gives
+	me soundcard
+101     soundcard producer was broken
+86	[PATCH] Spec file improvements
+
+Issues fixed since 0.1.1:
+
+ticket	summary
+20	No error handling for missing GStreamer plugins
+43	figure out a python way of changing import so it can load similar
+	package paths from different locations
+45	fix service script
+61	OSS/Alsa/ESD option in audio source
+72	Webcam component should propose device selection
+85	Bttv option in the Wizard seems broken
+73	Workers become zombies after interface cleanup
+80	Flumotion-tester do not work due to missing dependecies
+	(flumotion.utils import log)
+32	Flumotion services not listed in the Fedora 'setup' tool
+51	Worker is not shutting down cleanly.
+58	check for python imaging
+76	wizard steps should remember last worker chosen
+84	Unable to go ahead if wizard stops due to missing plugin
+
+Issues fixed since 0.1.0:
+
+ticket	summary
+54	wizard pages should be able to run code on the worker to detect stuff
+57	No firewire video page to choose width and height on
+40	TV card in wizard gives problems
+41	After cleaning up from the admin interface the workers are staying as
+        workers turn into zombies after cleanup from admin
+42	cleanup and new config does not work in wizard
+55	TV card should allow choice of signal and channel
+56	traceback in wizard with webcam
+38	trac URL wrong
+46	check for twisted 1.3.0 in configure
+

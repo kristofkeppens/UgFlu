@@ -1,0 +1,100 @@
+<registry>
+
+  <components>
+
+    <component type="audiotest-producer"
+               base="flumotion/component/producers/audiotest"
+               _description="Produces an example audio signal without using a device.">
+      <source location="flumotion.component.producers.audiotest.audiotest" />
+      <feeder name="default"/>
+
+      <entries>
+        <entry type="component" location="audiotest.py"
+               function="AudioTest" />
+        <entry type="admin/gtk" location="admin_gtk.py"
+               function="AudioTestAdminGtk" />
+        <entry type="wizard" location="wizard_gtk.py"
+               function="AudioTestWizardPlugin" />
+      </entries>
+
+      <wizard type="audio-producer" _description="Test audio producer"
+              feeder="default" />
+
+      <!-- priority to this clock so that when testing, clock choice is
+           deterministic -->
+      <synchronization required="yes" clock-priority="110" />
+
+      <properties>
+        <property name="volume" type="float"
+                  _description="The volume of the test signal (0.0 - 1.0). Defaults to 1.0." />
+        <property name="samplerate" type="int"
+                  _description="The Sample rate (in Hz).  Defaults to 44100." />
+        <property name="frequency" type="int"
+                  _description="The frequency of the test signal (in Hz). Defaults to 440." />
+        <property name="drop-probability" type="float"
+                  _description="The fraction of buffers to drop (0.0 - 1.0). Only useful for debugging." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="audiotest-base">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/audiotest">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="audiotest-component">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="audiotest-base" />
+            <dependency name="volume-effect" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/audiotest">
+                <filename location="audiotest.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="audiotest-admin-gtk">
+      <dependencies>
+        <dependency name="audiotest-base" />
+        <dependency name="base-admin-gtk" />
+        <dependency name="volume-admin-gtk" />
+      </dependencies>
+
+      <directories>
+        <directory name="flumotion/component/producers/audiotest">
+          <filename location="admin_gtk.py" />
+          <filename location="audiotest.glade" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="audiotest-wizard">
+        <dependencies>
+            <dependency name="audiotest-base" />
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/audiotest">
+                <filename location="wizard.glade" />
+                <filename location="wizard_gtk.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

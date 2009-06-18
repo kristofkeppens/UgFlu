@@ -1,0 +1,144 @@
+* EASY          put the type, moduleName, methodName, config set in
+		a dict - or possibly a real object - instead of passing all
+                these around in all functions
+
+* MEDIUM	expand config file format with <section> blocks so the
+		same set of properties can be repeated for, for example,
+		a streamer component
+
+* MEDIUM	add api for admins to "subscribe" to admin methods in the
+		manager, so only relevant commands get sent
+
+* EASY		require base= attribute to <comp>
+
+* EASY		remove all old deprecated bundling code everywhere
+
+* EASY		don't throw up the disconnect dialog when exiting admin client
+
+* MEDIUM	give useful error messages when there is no network !
+		(service network stop and start flumotion and see hang)
+
+* EASY		move muxers in their own dir ?
+
+* MEDIUM	component.component overrides .error and calls reactor.stop(),
+	  	this is dangerous, figure that out
+
+* MEDIUM	allow expression of
+		"test component depends on streamer component"
+		ie. non-feedcomponent dependencies
+
+* EASY		change rawstring regentry type to string, and make
+                pipelinestring for pipelines which need \n translated to space
+
+* EASY		and force update every minute,
+		or when stats are different from last,
+	 	in http streamer UI
+
+* HARD		transfer ALL code from manager
+
+* EASY		decide if bouncer's base authenticate method should always
+		be overridden and thus raise
+
+* MEDIUM	if you specify a converter with feedname other than default
+		and a consumer eating from that feed and change the source
+		to the same feedname, it fails.
+
+* MEDIUM	webcams can be I420, YUY2, or others; we should detect this
+	  	gst-plugins 0.8.6 will detect automatically since there is a
+		new option for autoprobe-fps which we can then use
+		use halogen
+
+* MEDIUM	add runtime checks for plugin versions to provide decent
+		fallbacks for bugs like this
+
+* HARD		split up source code layout according to bundleability
+
+* EASY		run with debug level 3 and make all messages "sane"
+		and symmetric
+
+* MEDIUM	implement cacheable Heavens for workers and components
+		to admin
+
+* HARD		work on proxyable state so that manager can initially create
+		it then send it to admin who then becomes master
+
+* MEDIUM	create Directed Acyclic Graph class and use it for
+		- bundle dependencies
+		- component dependencies
+		and possibly remove feederset
+
+* MEDIUM	allow placing markers in the logs, preferably in all
+		processes at the same time, same marker.  Allows you to
+		keep track of what you are doing during debugging
+
+* MEDIUM	allow to collect logs from all processes everywhere,
+		possibly truncating older data or from older run, and
+		bzip it up, and send it for debug
+
+* MEDIUM	add and test a feature allowing you to start a python shell
+		from the admin UI into any worker or manager
+		helps ENORMOUSLY in debugging strange errors at a point
+		where the system is broken - like AlreadyConnectedError
+
+* EASY		add worker checks to all wizard steps now that infrastructure
+		is there
+
+* MEDIUM	when creating components in jobs, get the actual avatarId
+		in there in some other way than putting it in the config dict
+
+* MEDIUM	block a feeding gst port, and have something eat from it ->
+		hangs in connect.  kill it -> process stays around
+
+* MEDIUM	clean up ambiguous naming in registry/wizard code
+		e.g. registry.getComponent -> getComponentEntry (it's a
+		template for a component, not an actual component)
+
+* MEDIUM	flumotion.common.registry: ewww @ RegistryEntryEntry
+		rename generic Entry to Node ?
+
+* MEDIUM	allow the manager to reparse all known config files; easier
+	        than restarting manager and all workers
+
+* MEDIUM	when a component segfaults, allow
+		attaching gdb and filing a bug report
+
+* HARD		clean up/refactor/document admin UI
+                + abstraction for better reuse
+
+* MEDIUM	BaseAdminGtkNode implements getProp, setProp, callRemote,
+	 	exactly the same way as BaseAdminGtk -> pass it as parent
+		so it can call on parent's methods
+
+* EASY		depgraph add/removeEdge arguments should be c, t, c, t
+		and not c, c, t, t
+
+* MEDIUM	find a way for the message area to contain hyperlinks
+		and make the PIL error hyperlinked
+
+* MEDIUM        allow replacing/migrating of components
+	        for example, start a new repeater on a different machine,
+	        connect its eaters, then redirect the eaters of the original
+	        repeater to this new component
+	 	(ideally with some way to tell multifdsink exactly where you
+	 	 want to pick up, through the feedserver)
+
+- API cleanup:
+
+- manager/component.py:
+  - create/remove Avatar -> summon/expel
+  - work on only name or only component, so there is a clear API distinction
+  - name all arguments used in functions that are the same, with the same name
+  - rename components to avatars, and rename functions accordingly
+
+- make an executable script/program that makes all required checks and
+  outputs a report, has a proper zero or non-zero exit status and
+  can't run forever if things are stuck (times out properly)
+
+
+http component
+
+- multiple sources
+- rate limit
+- make an http URL return a 2xx code when it works or a 5xx code
+  when it doesn't
+- check for StringIO requests instances, which Twisted 1.3.0 implements

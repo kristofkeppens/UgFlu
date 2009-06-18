@@ -1,0 +1,44 @@
+<registry>
+  <bundles>
+
+    <bundle name="colorbalance-base">
+        <dependencies>
+            <dependency name="component" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/effects/colorbalance">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="colorbalance-admin-gtk">
+        <dependencies>
+            <dependency name="base-admin-gtk" />
+            <dependency name="colorbalance-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/effects/colorbalance">
+                <filename location="admin_gtk.py" />
+                <filename location="colorbalance.glade" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="colorbalance-effect">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="colorbalance-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/effects/colorbalance">
+                <filename location="colorbalance.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+</registry>
