@@ -1,0 +1,38 @@
+<planet name="UGS">
+
+
+<manager name="planet-UG">
+    <host></host>
+    <port>7531</port>
+    <transport>ssl</transport>
+    <certificate>/home/kristof/UGS/default.pem</certificate>
+    <debug>5</debug>
+    <component name="manager-bouncer" type="htpasswdcrypt-bouncer">
+      <property name="data"><![CDATA[
+user:PSfNpHTkpTx1M
+]]></property>
+    </component>
+  </manager>
+
+<atmosphere>
+	<component name="streamer-bouncer" project="flumotion" type="ldap-bouncer" version="0.5.4" worker="localhost">
+		<property name="server">ldap://ictoext2.ugent.be</property>
+		<property name="dn">cn=admin,dc=ictoext2,dc=ugent,dc=be</property>
+		<property name="pw">againstme</property>
+		<property name="base_dn">ou=people,dc=ictoext2,dc=ugent,dc=be</property>
+	</component>
+	<component name="http-streamer-ondemand" type="http-server" label="http-server-ondemand" worker="localhost" project="flumotion" version="0.5.4">
+		<property name="mount-point">/</property>
+		<property name="port">8800</property>
+		<property name="path">/home/kristof/UGS/flv</property>
+		<property name="bouncer">streamer-bouncer</property>
+		<plugs>
+			<plug socket="flumotion.component.plugs.loggers.Logger"
+				type="requestlogger-file">
+				<property name="logfile">/home/kristof/UGS/UGS-log.log</property>
+			</plug>
+		</plugs>
+	</component>
+</atmosphere>
+
+</planet>

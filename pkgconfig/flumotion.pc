@@ -1,0 +1,8 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+flumotiondir=${libdir}/flumotion/python
+
+Name: Flumotion
+Description: Streaming media server
+Version: 0.5.4

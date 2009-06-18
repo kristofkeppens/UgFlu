@@ -1,0 +1,88 @@
+#!/usr/bin/python
+# -*- Mode: Python -*-
+# vi:si:et:sw=4:sts=4:ts=4
+#
+# Flumotion - a streaming media server
+# Copyright (C) 2004,2005,2006 Fluendo, S.L. (www.fluendo.com).
+# All rights reserved.
+
+# This file may be distributed and/or modified under the terms of
+# the GNU General Public License version 2 as published by
+# the Free Software Foundation.
+# This file is distributed without any warranty; without even the implied
+# warranty of merchantability or fitness for a particular purpose.
+# See "LICENSE.GPL" in the source distribution for more information.
+
+# Licensees having purchased or holding a valid Flumotion Advanced
+# Streaming Server license may use this file in accordance with the
+# Flumotion Advanced Streaming Server Commercial License Agreement.
+# See "LICENSE.Flumotion" in the source distribution for more information.
+
+# Headers in this file shall remain intact.
+
+import os
+import sys
+import optparse
+
+sys.path.insert(0, '@PYGTK_DIR@')
+import pygtk
+pygtk.require('2.0')
+
+import gobject
+if gobject.pygtk_version < (2,3,96):
+    print 'PyGTK 2.3.96 or higher is required'
+    raise SystemExit
+gobject.threads_init()
+
+# This can't be removed,
+dir = os.path.dirname(os.path.abspath(__file__))
+if os.path.exists(os.path.join(dir, '..', 'flumotion', '.svn')):
+    root = os.path.split(dir)[0]
+else:
+    root = os.path.join('/usr/local/lib', 'flumotion', 'python')
+sys.path.insert(0, root)
+
+from flumotion.common import log
+from flumotion.tester import clientfactory
+
+def main(args):
+    log.init()
+
+    loop = gobject.MainLoop()
+
+    parser = optparse.OptionParser()
+    parser.add_option('-c', '--clients', action="store",
+        type="int", dest="clients", help="Number of clients to start")
+    parser.add_option('-m', '--max-clients', action="store",
+        type="int", dest="maxclients", help="Maximum number of active clients")
+
+    parser.add_option('-s', '--readsize', action="store",
+        type="string", dest="readsize", help="Size of each read, or range")
+    parser.add_option('-r', '--readrate', action="store",
+        type="string", dest="readrate", help="Rate of reads in bytes/sec")
+    parser.add_option('-b', '--bytes', action="store",
+        type="string", dest="bytes", help="Number of bytes to read")
+    parser.add_option('-t', '--time', action="store",
+        type="string", dest="time", help="Time to live in seconds")
+
+    options, args = parser.parse_args(args)
+    try:
+        options.url = args[1]
+    except IndexError:
+        print "please give a URL to test"
+        sys.exit(1)
+
+    if not options.clients:
+        options.clients = 100
+
+    factory = clientfactory.ClientFactory(loop, options)
+    gobject.idle_add(factory.run)
+
+    log.log('info', "going into main loop")
+    loop.run()
+
+    # we're done, print some info
+    factory.stats()
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv))

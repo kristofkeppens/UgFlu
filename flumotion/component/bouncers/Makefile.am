@@ -7,8 +7,8 @@ component_PYTHON = \
 	bouncer.py \
 	component.py \
 	htpasswdcrypt.py \
-	icalbouncer.py \
 	ldapbouncer.py \
+	icalbouncer.py \
 	ipbouncer.py \
 	saltsha256.py \
 	plug.py \

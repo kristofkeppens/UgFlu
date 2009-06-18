@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/flumotion/svn/!svn/ver/7777/flumotion/trunk/flumotion/admin/assistant
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/flumotion/svn/!svn/ver/7738/flumotion/trunk/flumotion/admin/assistant/models.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/flumotion/svn/!svn/ver/7214/flumotion/trunk/flumotion/admin/assistant/__init__.py
+END
+configurationwriter.py
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/flumotion/svn/!svn/ver/7214/flumotion/trunk/flumotion/admin/assistant/configurationwriter.py
+END
+interfaces.py
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/flumotion/svn/!svn/ver/7626/flumotion/trunk/flumotion/admin/assistant/interfaces.py
+END
+save.py
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/flumotion/svn/!svn/ver/7777/flumotion/trunk/flumotion/admin/assistant/save.py
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/flumotion/svn/!svn/ver/7628/flumotion/trunk/flumotion/admin/assistant/Makefile.am
+END

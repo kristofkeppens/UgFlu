@@ -1,0 +1,63 @@
+<registry>
+
+  <bundles>
+
+    <bundle name="flumotion-locale-fr" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="fr/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-nl" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="nl/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-pt" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="pt_BR/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-ca" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="ca/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-sv" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="sv/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-nb" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="nb/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+    <bundle name="flumotion-locale-es" under="localedatadir" project="flumotion">
+      <directories>
+        <directory name="locale">
+          <filename location="es/LC_MESSAGES/flumotion.mo" />
+        </directory>
+      </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>
