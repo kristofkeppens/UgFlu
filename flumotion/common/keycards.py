@@ -109,8 +109,24 @@ class KeycardGeneric(Keycard, object):
 #        usernamePlaintextPassword
 
 UPP = credentials.UsernamePasswordPlaintext
-class KeycardUAPP(Keycard, UsernamePasswordPlaintext):
-    pass
+
+class KeycardUAPP(Keycard, UPP):
+  
+    def __init__(self, username, password, address):
+      UPP.__init__(self,username, password)
+      Keycard.__init__(self)
+      self.address = address
+      
+    def getData(self):      
+      d = Keycard.getData(self)
+      d['username'] = self.username
+      d['address'] = self.address
+      return d
+    
+    def __repr__(self):
+        return "<%s %s %s@%s for requesterId %r in state %s>" % (
+            self.__class__.__name__, self.id, self.username, self.address,
+            self.requesterId, _statesEnum[self.state])      
   
 
 pb.setUnjellyableForClass(KeycardGeneric, KeycardGeneric)
